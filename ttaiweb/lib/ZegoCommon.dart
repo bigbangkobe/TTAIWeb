@@ -1,0 +1,5 @@
+int zegoAppId = 563682924;
+String zegoChannelId = "test_channel";
+String zegoToken = "04AAAAAGgAvskADNg1vFqEs7pCh4k3IACs0Z7UFwV8HC4aKNGxF92cK4dWS/uD21iZlYmCilBgWSfWSrLw8bZ3QY3T0i8xim/k1XebhffdZQLI6j+sOAAzp+UohLP5PFas1x368sRUb3JPE2gwncgyqfwn+n9GlLVUzvHuzmdsbnhsJJoJxPe7mdjEdmTz4HTf/J2XqSdCtzYcSUyVN23VHhGNh1smIeUOWiSeYPBNr26/F8dt3eDjolJdKy5LM9nDhJzYdQE=";
+String zegoAppSign = "271026b298228cc7f6e241890f6edc5ae1a4b417077ffba8ccb7a9e4af03da37";
+String zegoCallbackSecret = "271026b298228cc7f6e241890f6edc5a";

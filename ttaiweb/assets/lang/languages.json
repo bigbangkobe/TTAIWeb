@@ -1,0 +1,327 @@
+[
+  {
+    "localName": "中文",
+    "languageCode": "zh",
+    "countryCode": "CN"
+  },
+  {
+    "localName": "繁體中文",
+    "languageCode": "zh",
+    "countryCode": "TW"
+  },
+  {
+    "localName": "English",
+    "languageCode": "en",
+    "countryCode": "US"
+  },
+  {
+    "localName": "日本語",
+    "languageCode": "ja",
+    "countryCode": "JP"
+  },
+  {
+    "localName": "Русский",
+    "languageCode": "ru",
+    "countryCode": "RU"
+  },
+  {
+    "localName": "Français",
+    "languageCode": "fr",
+    "countryCode": "FR"
+  },
+  {
+    "localName": "Español",
+    "languageCode": "es",
+    "countryCode": "ES"
+  },
+  {
+    "localName": "Italiano",
+    "languageCode": "it",
+    "countryCode": "IT"
+  },
+  {
+    "localName": "Tiếng Việt",
+    "languageCode": "vi",
+    "countryCode": "VN"
+  },
+  {
+    "localName": "ไทย",
+    "languageCode": "th",
+    "countryCode": "TH"
+  },
+  {
+    "localName": "한국어",
+    "languageCode": "ko",
+    "countryCode": "KR"
+  },
+  {
+    "localName": "Deutsch",
+    "languageCode": "de",
+    "countryCode": "DE"
+  },
+  {
+    "localName": "Pilipino",
+    "languageCode": "fil",
+    "countryCode": "PH"
+  },
+  {
+    "localName": "Bahasa Melayu",
+    "languageCode": "ms",
+    "countryCode": "MY"
+  },
+  {
+    "localName": "Bahasa Indonesia",
+    "languageCode": "id",
+    "countryCode": "ID"
+  },
+  {
+    "localName": "العربية",
+    "languageCode": "ar",
+    "countryCode": "SA"
+  },
+  {
+    "localName": "Türkçe",
+    "languageCode": "tr",
+    "countryCode": "TR"
+  },
+  {
+    "localName": "Қазақ тілі",
+    "languageCode": "kk",
+    "countryCode": "KZ"
+  },
+  {
+    "localName": "Afrikaans",
+    "languageCode": "af",
+    "countryCode": "ZA"
+  },
+  {
+    "localName": "አማርኛ",
+    "languageCode": "am",
+    "countryCode": "ET"
+  },
+  {
+    "localName": "Azərbaycan",
+    "languageCode": "az",
+    "countryCode": "AZ"
+  },
+  {
+    "localName": "বাংলা",
+    "languageCode": "bn",
+    "countryCode": "BD"
+  },
+  {
+    "localName": "Català",
+    "languageCode": "ca",
+    "countryCode": "ES"
+  },
+  {
+    "localName": "Čeština",
+    "languageCode": "cs",
+    "countryCode": "CZ"
+  },
+  {
+    "localName": "Dansk",
+    "languageCode": "da",
+    "countryCode": "DK"
+  },
+  {
+    "localName": "Ελληνικά",
+    "languageCode": "el",
+    "countryCode": "GR"
+  },
+  {
+    "localName": "فارسی",
+    "languageCode": "fa",
+    "countryCode": "IR"
+  },
+  {
+    "localName": "Suomi",
+    "languageCode": "fi",
+    "countryCode": "FI"
+  },
+  {
+    "localName": "עברית",
+    "languageCode": "he",
+    "countryCode": "IL"
+  },
+  {
+    "localName": "हिन्दी",
+    "languageCode": "hi",
+    "countryCode": "IN"
+  },
+  {
+    "localName": "Hrvatski",
+    "languageCode": "hr",
+    "countryCode": "HR"
+  },
+  {
+    "localName": "Magyar",
+    "languageCode": "hu",
+    "countryCode": "HU"
+  },
+  {
+    "localName": "Հայերեն",
+    "languageCode": "hy",
+    "countryCode": "AM"
+  },
+  {
+    "localName": "Icelandic",
+    "languageCode": "is",
+    "countryCode": "IS"
+  },
+  {
+    "localName": "Română",
+    "languageCode": "ro",
+    "countryCode": "RO"
+  },
+  {
+    "localName": "ქართული",
+    "languageCode": "ka",
+    "countryCode": "GE"
+  },
+  {
+    "localName": "ភាសាខ្មែរ",
+    "languageCode": "km",
+    "countryCode": "KH"
+  },
+  {
+    "localName": "ພາສາລາວ",
+    "languageCode": "lo",
+    "countryCode": "LA"
+  },
+  {
+    "localName": "Lietuvių",
+    "languageCode": "lt",
+    "countryCode": "LT"
+  },
+  {
+    "localName": "Latviešu",
+    "languageCode": "lv",
+    "countryCode": "LV"
+  },
+  {
+    "localName": "മലയാളം",
+    "languageCode": "ml",
+    "countryCode": "IN"
+  },
+  {
+    "localName": "मराठी",
+    "languageCode": "mr",
+    "countryCode": "IN"
+  },
+  {
+    "localName": "Bokmål",
+    "languageCode": "nb",
+    "countryCode": "NO"
+  },
+  {
+    "localName": "नेपाली",
+    "languageCode": "ne",
+    "countryCode": "NP"
+  },
+  {
+    "localName": "Nederlands",
+    "languageCode": "nl",
+    "countryCode": "NL"
+  },
+  {
+    "localName": "Polski",
+    "languageCode": "pl",
+    "countryCode": "PL"
+  },
+  {
+    "localName": "Português",
+    "languageCode": "pt",
+    "countryCode": "PT"
+  },
+  {
+    "localName": "සිංහල",
+    "languageCode": "si",
+    "countryCode": "LK"
+  },
+  {
+    "localName": "Slovenčina",
+    "languageCode": "sk",
+    "countryCode": "SK"
+  },
+  {
+    "localName": "Slovenščina",
+    "languageCode": "sl",
+    "countryCode": "SI"
+  },
+  {
+    "localName": "Српски",
+    "languageCode": "sr",
+    "countryCode": "RS"
+  },
+  {
+    "localName": "Basa Sunda",
+    "languageCode": "su",
+    "countryCode": "ID"
+  },
+  {
+    "localName": "Svenska",
+    "languageCode": "sv",
+    "countryCode": "SE"
+  },
+  {
+    "localName": "Kiswahili",
+    "languageCode": "sw",
+    "countryCode": "KE"
+  },
+  {
+    "localName": "தமிழ்",
+    "languageCode": "ta",
+    "countryCode": "IN"
+  },
+  {
+    "localName": "తెలుగు",
+    "languageCode": "te",
+    "countryCode": "IN"
+  },
+  {
+    "localName": "Basa Jawa",
+    "languageCode": "jv",
+    "countryCode": "ID"
+  },
+  {
+    "localName": "Українська",
+    "languageCode": "uk",
+    "countryCode": "UA"
+  },
+  {
+    "localName": "اردو",
+    "languageCode": "ur",
+    "countryCode": "PK"
+  },
+  {
+    "localName": "isiZulu",
+    "languageCode": "zu",
+    "countryCode": "ZA"
+  },
+  {
+    "localName": "Монгол",
+    "languageCode": "mn",
+    "countryCode": "MN"
+  },
+  {
+    "localName": "မြန်မာ",
+    "languageCode": "my",
+    "countryCode": "MM"
+  },
+  {
+    "localName": "پښتو",
+    "languageCode": "ps",
+    "countryCode": "AF"
+  },
+  {
+    "localName": "O'zbek",
+    "languageCode": "uz",
+    "countryCode": "UZ"
+  },
+  {
+    "localName": "Български",
+    "languageCode": "bg",
+    "countryCode": "BG"
+  }
+]

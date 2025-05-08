@@ -1,0 +1,12 @@
+[
+  { "localName": "中文", "displayName": "中文", "code": "cn" ,"voice": "xiaoyan","asrCode": "zh_cn"},
+  { "localName": "英语", "displayName": "English", "code": "en" ,"voice": "x4_enus_catherine_profnews","asrCode": "en_us"},
+  { "localName": "俄语", "displayName": "Русский", "code": "ru" ,"voice": "x2_RuRu_Keshu","asrCode": "ru-ru"},
+  { "localName": "法语", "displayName": "Français", "code": "fr" ,"voice": "x2_FrRgM_Lisa","asrCode": "fr_fr"},
+  { "localName": "西班牙语", "displayName": "Español", "code": "es" ,"voice": "gabriela","asrCode": "es_es"},
+  { "localName": "意大利语", "displayName": "Italiano", "code": "it" ,"voice": "x2_ItIt_Anna","asrCode": "it_IT"},
+  { "localName": "越南语", "displayName": "Tiếng Việt", "code": "vi" ,"voice": "xiaoyun","asrCode": "vi_VN"},
+  { "localName": "韩语", "displayName": "한국어", "code": "ko" ,"voice": "zhimin","asrCode": "ko_kr"},
+  { "localName": "德语", "displayName": "Deutsch", "code": "de" ,"voice": "x2_DeDe_Christiane","asrCode": "de_DE"},
+  { "localName": "阿拉伯语", "displayName": "العربية", "code": "ar" }
+]

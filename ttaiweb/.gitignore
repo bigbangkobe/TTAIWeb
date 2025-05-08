@@ -1,0 +1,63 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+.buildlog/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+.melos_tool/
+
+# Build output
+build/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.symlinks
+ios/Pods
+ios/.flutter-plugins
+ios/.flutter-plugins-dependencies
+macos/Flutter/ephemeral
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods
+macos/.symlinks
+
+# Android related
+android/.gradle/
+android/captures/
+android/.idea/
+
+# Web related
+web/generated_plugin_registrant.dart
+build/web/
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Xcode related
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.xcworkspace/
+*.xcuserstate
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+
+# Others
+*.log
+*.lock
+*.DS_Store
+*.apk
+*.aab
+*.ipa
+
+# Firebase crashlytics
+firebase_app_distribution_config.json

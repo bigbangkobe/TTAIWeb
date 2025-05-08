@@ -1,0 +1,4 @@
+[
+  { "localName": "中文", "displayName": "中文", "code": "cn" ,"voice": "x4_lingxiaoying_assist","asrCode": "zh_cn"},
+  { "localName": "英语", "displayName": "English", "code": "en" ,"voice": "x4_enus_catherine_profnews","asrCode": "en_us"}
+]
