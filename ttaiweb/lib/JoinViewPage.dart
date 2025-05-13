@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ttaiweb/quick_start_page.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'VideoCallPage.dart';
@@ -53,7 +54,8 @@ class _JoinViewPageState extends ConsumerState<JoinViewPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const VideoCallPage(),
+                    builder: (context) => QuickStartPage(),
+                    // builder: (context) => const VideoCallPage(),
                   ),
                 );
               },

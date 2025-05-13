@@ -201,7 +201,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
         ZegoAudioSampleRate.SampleRate16K,   // 44100Hz is a common sample rate
         ZegoAudioChannel.Mono
     );
-    int observerBitMask = (1 << 0)  | (1 << 3);
+    int observerBitMask = ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player;
     ZegoExpressEngine.instance.startAudioDataObserver(observerBitMask, param);
     // 设置本地音频数据回调
     ZegoExpressEngine.onCapturedAudioData = (data, length, param) {
