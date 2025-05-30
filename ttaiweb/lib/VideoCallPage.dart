@@ -201,30 +201,81 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
         ZegoAudioSampleRate.SampleRate16K,   // 44100Hz is a common sample rate
         ZegoAudioChannel.Mono
     );
-    int observerBitMask = ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player;
+    int observerBitMask = ZegoAudioDataCallbackBitMask.Captured|ZegoAudioDataCallbackBitMask.Player;
     ZegoExpressEngine.instance.startAudioDataObserver(observerBitMask, param);
     // 设置本地音频数据回调
-    ZegoExpressEngine.onCapturedAudioData = (data, length, param) {
+    // ZegoExpressEngine.onCapturedAudioData = (data, length, param) {
+    //   // 处理本地PCM音频数据...
+    //   if(mounted){
+    //     processLocalAudio(
+    //       data,
+    //       leftLanguage['code'], // 使用左侧选择的语言识别
+    //     );
+    //   }
+    // };
+    //
+    //
+    // // 设置远端音频数据回调
+    // ZegoExpressEngine.onPlayerAudioData = (data, length, param, streamID) {
+    //   // 处理特定流的远端音频数据...
+    //   if(mounted){
+    //     processRemoteAudio(
+    //       data,
+    //       rightLanguage['code'], // 使用左侧选择的语言识别
+    //     );
+    //   }
+    // };
+    ZegoExpressEngine.onCapturedAudioData = ((data, length, param) {
+
       // 处理本地PCM音频数据...
       if(mounted){
+        final noZegoLength = this.countValuesGreaterThanZero(data);
+        // print('🚩 emmmmmm onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
         processLocalAudio(
           data,
           leftLanguage['code'], // 使用左侧选择的语言识别
         );
       }
-    };
+    });
+    ZegoExpressEngine.onPlayerAudioData = ((data, length, param, streamID) {
+        // 处理特定流的远端音频数据...
+        if(mounted){
+          final noZegoLength = this.countValuesGreaterThanZero(data);
+          // print('🚩 emmmmmm onPlayerAudioData, length:$noZegoLength/$length streamID:$streamID ${param.channel} ${param.sampleRate}');
+          processRemoteAudio(
+            data,
+            rightLanguage['code'], // 使用左侧选择的语言识别
+          );
+        }
+    });
 
+    // ZegoExpressEngine.onPlaybackAudioData = ((data, length, param) {
+    //   final noZegoLength = this.countValuesGreaterThanZero(data);
+    //   print(
+    //       '🚩 fffflutter onPlaybackAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
+    // });
+    // ZegoExpressEngine.onCapturedAudioData = ((data, length, param) {
+    //   final noZegoLength = this.countValuesGreaterThanZero(data);
+    //   print(
+    //       '🚩 fffflutter onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
+    //     // 处理本地PCM音频数据...
+    //     if(mounted){
+    //       processLocalAudio(
+    //         data,
+    //         leftLanguage['code'], // 使用左侧选择的语言识别
+    //       );
+    //     }
+    // });
+  }
 
-    // 设置远端音频数据回调
-    ZegoExpressEngine.onPlayerAudioData = (data, length, param, streamID) {
-      // 处理特定流的远端音频数据...
-      if(mounted){
-        processRemoteAudio(
-          data,
-          rightLanguage['code'], // 使用左侧选择的语言识别
-        );
+  int countValuesGreaterThanZero(Uint8List list) {
+    int count = 0;
+    for (int value in list) {
+      if (value > 0) {
+        count++;
       }
-    };
+    }
+    return count;
   }
 
   // Join a channel

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+// import 'dart:io';
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
@@ -140,18 +140,18 @@ class XunFeiTTS {
   void _saveAudio(
       Uint8List audioData, Function(String filePath) callback) async {
     print("开始保存音频数据:$filePath");
-    final file = File(filePath);
-    try {
-      await file.writeAsBytes(audioData);
-      callback(filePath); // 回调音频文件路径
-    } catch (e) {
-      print("保存音频时出错: $e");
-    }
+    // final file = File(filePath);
+    // try {
+    //   await file.writeAsBytes(audioData);
+    //   callback(filePath); // 回调音频文件路径
+    // } catch (e) {
+    //   print("保存音频时出错: $e");
+    // }
   }
 
   Future<String> _getAuthUrl() async {
     final uri = Uri.parse(hostUrl);
-    final String date = HttpDate.format(DateTime.now().toUtc());
+    final String date = _formatHttpDate(DateTime.now().toUtc());
     final String signatureOrigin =
         'host: ${uri.host}\ndate: $date\nGET ${uri.path} HTTP/1.1';
     final hmac = Hmac(sha256, utf8.encode(apiSecret));
@@ -168,6 +168,16 @@ class XunFeiTTS {
 
     final authUri = uri.replace(queryParameters: queryParameters);
     return authUri.toString();
+  }
+
+// 替代 HttpDate.format(DateTime.now().toUtc())
+  String _formatHttpDate(DateTime date) {
+    // RFC 1123 格式
+    final weekday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][date.weekday - 1];
+    final month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][date.month - 1];
+    return '$weekday, ${date.day.toString().padLeft(2, '0')} $month ${date.year} '
+        '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')} GMT';
   }
 
   void dispose() {

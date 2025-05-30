@@ -44,7 +44,7 @@ dependencies:
   geolocator: ^13.0.0
   geocoding: ^3.0.0
   easy_localization: ^3.0.0
-  zego_express_engine: ^3.20.0-private.331
+  zego_express_engine: 3.20.5-private.346
   universal_html: ^2.2.4
 #  flutter_z_location: ^0.0.9
   # The following adds the Cupertino Icons font to your application.

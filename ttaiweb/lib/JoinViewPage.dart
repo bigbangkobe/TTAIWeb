@@ -54,8 +54,8 @@ class _JoinViewPageState extends ConsumerState<JoinViewPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => QuickStartPage(),
-                    // builder: (context) => const VideoCallPage(),
+                    // builder: (context) => QuickStartPage(),
+                    builder: (context) => const VideoCallPage(),
                   ),
                 );
               },
