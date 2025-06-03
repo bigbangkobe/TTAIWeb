@@ -207,7 +207,7 @@ class _QuickStartPageState extends State<QuickStartPage> {
   bool isOpenObserver = true;
   void startObserver() {
     if( this.isOpenObserver) {
-      ZegoExpressEngine.instance.startAudioDataObserver(ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player, ZegoAudioFrameParam(ZegoAudioSampleRate.SampleRate48K, ZegoAudioChannel.Mono));
+      ZegoExpressEngine.instance.startAudioDataObserver(ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player, ZegoAudioFrameParam(ZegoAudioSampleRate.SampleRate16K, ZegoAudioChannel.Mono));
     }else {
       ZegoExpressEngine.instance.stopAudioDataObserver();
     }
