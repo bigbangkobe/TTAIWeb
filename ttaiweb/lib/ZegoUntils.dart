@@ -21,6 +21,10 @@ class ZegoConfig {
   String userID = "123";
   String userName = "123";
   String room = "room";
+  ///app端左边语言
+  int leftLanguageIndex = 0;
+  ///app端右边语言
+  int rightLanguageIndex = 1;
 
   bool isPreviewMirror = true;
   bool isPublishMirror = false;

@@ -1,10 +1,13 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ttaiweb/JoinViewPage.dart';
 import 'AnalyticsObserver.dart';
+import 'LanguageManager.dart';
 import 'ZegoUntils.dart';
 
 void main() async {
@@ -33,12 +36,42 @@ void main() async {
 class MyApp extends ConsumerWidget {
   final RouteObserver<PageRoute<dynamic>> routeObserver = AnalyticsObserver();
 
+  void parseShareLink() {
+    final encodedData = Uri.base.queryParameters['data'];
+
+    if (encodedData == null) {
+      throw Exception("分享链接缺少 data 参数！");
+    }
+
+    try {
+      final decodedJson = utf8.decode(base64Url.decode(encodedData));
+      final params = jsonDecode(decodedJson);
+
+      ZegoConfig.instance.userID = params['userId'];
+      ZegoConfig.instance.userName = params['userName'];
+      ZegoConfig.instance.room = params['room'];
+      ZegoConfig.instance.leftLanguageIndex = params['leftLanguageIndex'];
+      ZegoConfig.instance.rightLanguageIndex = params['rightLanguageIndex'];
+
+    } catch (e) {
+      print("分享链接解码失败：$e");
+    }
+  }
+
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // 获取 URL 中的 `agoraChannelId` 参数
-    ZegoConfig.instance.userID = Uri.base.queryParameters['userId']!;
-    ZegoConfig.instance.userName = Uri.base.queryParameters['userName']!;
-    ZegoConfig.instance.room = Uri.base.queryParameters['room']!;
+    parseShareLink();
+
+    Future.microtask(() {
+      final not = ref
+          .read(languageSelectionProvider(
+          "VedioCall")
+          .notifier);
+      not.selectLeftLanguage(ZegoConfig.instance.rightLanguageIndex);
+      not.selectRightLanguage(ZegoConfig.instance.leftLanguageIndex);
+    });
     // agoraChannelId = channelId!;
     return MaterialApp(
       navigatorObservers: [routeObserver],

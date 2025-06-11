@@ -237,69 +237,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       // print(
       //     '🚩 fffflutter onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
     });
-    // 设置本地音频数据回调
-    // ZegoExpressEngine.onCapturedAudioData = (data, length, param) {
-    //   // 处理本地PCM音频数据...
-    //   if(mounted){
-    //     processLocalAudio(
-    //       data,
-    //       leftLanguage['code'], // 使用左侧选择的语言识别
-    //     );
-    //   }
-    // };
-    //
-    //
-    // // 设置远端音频数据回调
-    // ZegoExpressEngine.onPlayerAudioData = (data, length, param, streamID) {
-    //   // 处理特定流的远端音频数据...
-    //   if(mounted){
-    //     processRemoteAudio(
-    //       data,
-    //       rightLanguage['code'], // 使用左侧选择的语言识别
-    //     );
-    //   }
-    // };
-    // ZegoExpressEngine.onCapturedAudioData = ((data, length, param) {
-    //
-    //   // 处理本地PCM音频数据...
-    //   if(mounted){
-    //     final noZegoLength = this.countValuesGreaterThanZero(data);
-    //     print('🚩 emmmmmm onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
-    //     processLocalAudio(
-    //       data,
-    //       leftLanguage['code'], // 使用左侧选择的语言识别
-    //     );
-    //   }
-    // });
-    // ZegoExpressEngine.onPlayerAudioData = ((data, length, param, streamID) {
-    //     // 处理特定流的远端音频数据...
-    //     if(mounted){
-    //       final noZegoLength = this.countValuesGreaterThanZero(data);
-    //       print('🚩 emmmmmm onPlayerAudioData, length:$noZegoLength/$length streamID:$streamID ${param.channel} ${param.sampleRate}');
-    //       processRemoteAudio(
-    //         data,
-    //         rightLanguage['code'], // 使用左侧选择的语言识别
-    //       );
-    //     }
-    // });
-    //
-    // ZegoExpressEngine.onPlaybackAudioData = ((data, length, param) {
-    //   final noZegoLength = this.countValuesGreaterThanZero(data);
-    //   print(
-    //       '🚩 fffflutter onPlaybackAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
-    // });
-    // ZegoExpressEngine.onCapturedAudioData = ((data, length, param) {
-    //   final noZegoLength = this.countValuesGreaterThanZero(data);
-    //   print(
-    //       '🚩 fffflutter onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
-    //     // 处理本地PCM音频数据...
-    //     if(mounted){
-    //       processLocalAudio(
-    //         data,
-    //         leftLanguage['code'], // 使用左侧选择的语言识别
-    //       );
-    //     }
-    // });
   }
 
   int countValuesGreaterThanZero(Uint8List list) {
@@ -837,11 +774,11 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
                                     .notifier)
                                     .selectLeftLanguage(index);
                               }),
-                          isEnabled: !(isLeftRecording || isRightRecording),
+                          isEnabled: false,
                         ),
                         const SizedBox(width: 10),
                         _buildLanguageSwapButton(
-                          isEnabled: !(isLeftRecording || isRightRecording),
+                          isEnabled: false,
                         ),
                         const SizedBox(width: 10),
                         _buildLanguageButtonWithIcon(
@@ -857,7 +794,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
                                     .notifier);
                                 not.selectRightLanguage(index);
                               }),
-                          isEnabled: !(isLeftRecording || isRightRecording),
+                          isEnabled: false,
                         ),
                       ],
                     ),
@@ -899,7 +836,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const Icon(Icons.arrow_drop_down, size: 20, color: Colors.white),
+              // const Icon(Icons.arrow_drop_down, size: 20, color: Colors.white),
             ],
           ),
         ),

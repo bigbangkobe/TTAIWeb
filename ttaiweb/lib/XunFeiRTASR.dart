@@ -103,8 +103,8 @@ class XunFeiRTASR {
     }
 
     if (_recordedData.length > 0) {
-      final filename = 'recorded_audio_${DateTime.now().millisecondsSinceEpoch}.wav';
-      saveAudioToFile(_recordedData.toBytes(), filename);
+      // final filename = 'recorded_audio_${DateTime.now().millisecondsSinceEpoch}.wav';
+      // saveAudioToFile(_recordedData.toBytes(), filename);
       _recordedData.clear();
     }
   }
