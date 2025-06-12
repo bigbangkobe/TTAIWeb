@@ -15,25 +15,43 @@ class XunFeiMachineTranslation {
   static String resId = "its_cn_en_word";
 
   static Future<void> sendMessage(String text, String from, String to,
-      Function(String) onSuccess, Function(String) onError) async {
-    try {
-      String response = await _doRequest(text, from, to);
-
-      // 解析 JSON 数据
-      var jsonResponse = jsonDecode(response);
-      String textBase64Decode =
-      utf8.decode(base64Decode(jsonResponse['payload']['result']['text']));
-      // 解析翻译结果
-      var translationResponse = jsonDecode(textBase64Decode);
-      String translatedText =
-      translationResponse['trans_result']['dst']; // 提取目标语言翻译
-
-      // 直接返回翻译结果
-      onSuccess(translatedText);
-    } catch (e) {
-      onError("Error: $e");
-    }
+      Function(String) onSuccess, Function(String) onError) async{
+    http.post(
+      Uri.parse('https://naturich.top:3000/api/token/xunfeiTranslate'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'text': text, 'from': from, 'to': to}),
+    ).then((resp) {
+      if (resp.statusCode == 200) {
+        final data = jsonDecode(resp.body);
+        onSuccess(data['translated']);
+      } else {
+        onError('HTTP ${resp.statusCode}: ${resp.body}');
+      }
+    }).catchError((e) {
+      onError(e.toString());
+    });
   }
+
+  // static Future<void> sendMessage(String text, String from, String to,
+  //     Function(String) onSuccess, Function(String) onError) async {
+  //   try {
+  //     String response = await _doRequest(text, from, to);
+  //
+  //     // 解析 JSON 数据
+  //     var jsonResponse = jsonDecode(response);
+  //     String textBase64Decode =
+  //     utf8.decode(base64Decode(jsonResponse['payload']['result']['text']));
+  //     // 解析翻译结果
+  //     var translationResponse = jsonDecode(textBase64Decode);
+  //     String translatedText =
+  //     translationResponse['trans_result']['dst']; // 提取目标语言翻译
+  //
+  //     // 直接返回翻译结果
+  //     onSuccess(translatedText);
+  //   } catch (e) {
+  //     onError("Error: $e");
+  //   }
+  // }
 
   static Future<String> _doRequest(String text, String from, String to) async {
     Uri url = Uri.parse(_buildRequestUrl());

@@ -204,9 +204,9 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     int observerBitMask = ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player;
     ZegoExpressEngine.instance.startAudioDataObserver(observerBitMask, param);
     ZegoExpressEngine.onMixedAudioData = ((data, length, param) {
-      final noZegoLength = this.countValuesGreaterThanZero(data);
-      print(
-          '🚩 fffflutter onMixedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
+      // final noZegoLength = this.countValuesGreaterThanZero(data);
+      // print(
+      //     '🚩 fffflutter onMixedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
       // 处理本地PCM音频数据...
       if(mounted){
         processLocalAudio(
@@ -433,13 +433,14 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
   // 处理本地麦克风音频
   Future<void> processLocalAudio(Uint8List pcmData, String lang) async {
+    // print("emmmmmm processLocalAudio$lang");
     if (_localRTASR.isFirst) {
       ConversationMessage message = ConversationMessage(
+        id: MessageIdGenerator.generate(),
         originalText: "",
         translatedText: "",
         ttsFilePath: "",
-        isPlaying: false,
-        isTalking: false,
+        playbackStatus: PlaybackStatus.idle,
         isLeft: false,
       );
       ref.read(conversationProviderTranslate.notifier).addMessage(message);
@@ -458,11 +459,11 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
           // Handle final result
           _handleFinalResult(finalResult, curNearMessage!, false, ref);
           ConversationMessage newMessage = ConversationMessage(
+            id: MessageIdGenerator.generate(),
             originalText: "",
             translatedText: "",
             ttsFilePath: "",
-            isPlaying: false,
-            isTalking: false,
+            playbackStatus: PlaybackStatus.idle,
             isLeft: false,
           );
           ref.read(conversationProviderTranslate.notifier).addMessage(newMessage);
@@ -476,13 +477,14 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
   // 处理远端用户音频
   void processRemoteAudio(Uint8List pcmData, String lang) {
+    // print("emmmmmm processRemoteAudio$lang");
     if (_remoteRTASR.isFirst) {
       ConversationMessage message = ConversationMessage(
+        id: MessageIdGenerator.generate(),
         originalText: "",
         translatedText: "",
         ttsFilePath: "",
-        isPlaying: false,
-        isTalking: false,
+        playbackStatus: PlaybackStatus.idle,
         isLeft: true,
       );
       ref.read(conversationProviderTranslate.notifier).addMessage(message);
@@ -501,11 +503,11 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
           // Handle final result
           _handleFinalResult(finalResult, curFarMessage!, true, ref);
           ConversationMessage newMessage = ConversationMessage(
+            id: MessageIdGenerator.generate(),
             originalText: "",
             translatedText: "",
             ttsFilePath: "",
-            isPlaying: false,
-            isTalking: false,
+            playbackStatus: PlaybackStatus.idle,
             isLeft: true,
           );
           ref.read(conversationProviderTranslate.notifier).addMessage(newMessage);
@@ -921,8 +923,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
           WidgetsBinding.instance.addPostFrameCallback((_) {
             scrollToEnd();
           });
-          final playingFilePath =
-              ref.watch(conversationProviderTranslate.notifier).playingFilePath;
           return ListView.builder(
             controller: _scrollController,
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -933,26 +933,22 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: message.isLeft
                     ? MessageContentLeft(
-                    originalText: message.originalText,
-                    translatedText: message.translatedText,
-                    ttsFilePath: message.ttsFilePath,
-                    isPlaying: message.isPlaying,
-                    isTalking: message.isTalking,
-                    playingFilePath: playingFilePath,
-                    onPlay: () => _onPlay(message, ref),
-                    onStop: () => _onStop(message, ref),
-                    originalTextColor: null,
-                    isAutoPlaying: message.isAutoPlaying)
-                    : MessageContentRight(
-                    originalText: message.originalText,
-                    translatedText: message.translatedText,
-                    ttsFilePath: message.ttsFilePath,
-                    isPlaying: message.isPlaying,
-                    isTalking: message.isTalking,
-                    playingFilePath: playingFilePath,
-                    onPlay: () => _onPlay(message, ref),
-                    onStop: () => _onStop(message, ref),
-                    isAutoPlaying: message.isAutoPlaying),
+                  originalText: message.originalText,
+                  translatedText: message.translatedText,
+                  ttsFilePath: message.ttsFilePath,
+                  playbackStatus: PlaybackStatus.idle,
+                  onPlay: () => _onPlay(message, ref),
+                  onStop: () => _onStop(message, ref),
+                  originalTextColor: null,
+                )
+                  : MessageContentRight(
+                originalText: message.originalText,
+                translatedText: message.translatedText,
+                ttsFilePath: message.ttsFilePath,
+                playbackStatus: PlaybackStatus.idle,
+                onPlay: () => _onPlay(message, ref),
+                onStop: () => _onStop(message, ref),
+                ),
               );
             },
           );
@@ -1097,6 +1093,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     } else {
       message.originalText = finalResult;
       ref.read(conversationProviderTranslate.notifier).updateMessage(message);
+      print("emmmmmm 调用翻译接口");
       XunFeiMachineTranslation.sendMessage(
         finalResult,
         isLeft
