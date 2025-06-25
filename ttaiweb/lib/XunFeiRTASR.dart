@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
-import 'dart:html' as html;
-
 import 'package:crypto/crypto.dart';
 import 'package:intl/intl.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:convert/convert.dart';
 
 class XunFeiRTASR {
@@ -12,69 +12,86 @@ class XunFeiRTASR {
   static const String secretKey = "6c1e25af5cce05d853c30225b0f248b6";
   static const String host = 'rtasr.xfyun.cn/v1/ws';
   static const String baseUrl = 'wss://$host';
+  static const String origin = 'https://$host';
+  static const int chunkedSize = 1280;
+
   static final DateFormat sdf = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
 
-  html.WebSocket? _webSocket;
+  bool _isConnected = false;
+  bool _isPaused = false;
   bool isFirst = true;
   String code = 'cn';
   int punc = 1;
-
-  final BytesBuilder _recordedData = BytesBuilder();
-
+  WebSocketChannel? _channel;
   Function(String)? onResult;
   Function(String)? onEndResult;
 
   Future<void> startChannel() async {
-    final Uri url = Uri.parse(
-      punc == 1
-          ? '$baseUrl${getHandShakeParams(appId, secretKey)}&lang=$code'
-          : '$baseUrl${getHandShakeParams(appId, secretKey)}&lang=$code&punc=$punc',
-    );
+    final Uri url;
+    if (punc == 1) {
+      url = Uri.parse(
+          '$baseUrl${getHandShakeParams(appId, secretKey)}&lang=$code');
+    } else {
+      url = Uri.parse(
+          '$baseUrl${getHandShakeParams(appId, secretKey)}&lang=$code&punc=$punc');
+    }
 
-    _webSocket = html.WebSocket(url.toString());
-    final completer = Completer<void>();
-
-    _webSocket!.onOpen.listen((event) {
-      print('${getCurrentTimeStr()} WebSocket 打开');
-    });
-
-    _webSocket!.onMessage.listen((event) {
-      final message = event.data;
-      if (message is String) {
-        final msgObj = jsonDecode(message);
-        final action = msgObj['action'];
-        if (action == 'started') {
-          print('${getCurrentTimeStr()} 握手成功！sid: ${msgObj['sid']}');
-          completer.complete();
-        } else if (action == 'result') {
-          final result = getContent(msgObj['data']);
-          final isFinal =
-              int.parse(jsonDecode(msgObj['data'])['cn']['st']['type']) == 0;
-          if (isFinal) {
-            onEndResult?.call(result);
-          } else {
-            onResult?.call(result);
-          }
-        } else if (action == 'error') {
-          print('Error: $message');
-        }
+    try {
+      // 跨平台兼容的连接方式
+      if (kIsWeb) {
+        // Web 平台不需要 headers
+        _channel = WebSocketChannel.connect(url);
+      } else {
+        // 移动平台使用 IOWebSocketChannel 并添加 headers
+        _channel = WebSocketChannel.connect(
+          url,
+          protocols: [],
+        );
+        // if (_channel is IOWebSocketChannel) {
+        //   (_channel as IOWebSocketChannel).innerWebSocket?.setRequestHeader('Origin', origin);
+        // }
       }
-    });
 
-    _webSocket!.onError.listen((event) {
-      print('${getCurrentTimeStr()} WebSocket 错误: $event');
-    });
+      final handshakeSuccess = Completer<void>();
 
-    _webSocket!.onClose.listen((event) {
-      print('${getCurrentTimeStr()} WebSocket 连接关闭');
-    });
+      _channel!.stream.listen(
+            (message) {
+          final msgObj = jsonDecode(message);
+          final action = msgObj['action'];
+          if (action == 'started') {
+            print('${getCurrentTimeStr()} 握手成功！sid: ${msgObj['sid']}');
+            _isConnected = true;
+            handshakeSuccess.complete();
+          } else if (action == 'result') {
+            final result = getContent(msgObj['data']);
+            final isFinal =
+                int.parse(jsonDecode(msgObj['data'])['cn']['st']['type']) == 0;
+            if (isFinal) {
+              onEndResult?.call(result);
+            } else {
+              onResult?.call(result);
+            }
+          } else if (action == 'error') {
+            print('Error: $message');
+            _isConnected = false;
+          }
+        },
+        onError: (error) {
+          print('${getCurrentTimeStr()} WebSocket 错误: $error');
+          _isConnected = false;
+        },
+        onDone: () {
+          print('${getCurrentTimeStr()} WebSocket 连接关闭');
+          _isConnected = false;
+        },
+      );
 
-    await completer.future;
-    print('${getCurrentTimeStr()} 开始发送音频数据');
-  }
-
-  Future<void> startRecording(String code, int punc, String path) async {
-    print('⚠️ Web端不支持直接 startRecording，请用外部 JS 或插件采集音频并传入 writeAudioData()');
+      await handshakeSuccess.future;
+      print('${sdf.format(DateTime.now())} 开始发送音频数据');
+    } catch (e) {
+      print('${getCurrentTimeStr()} 连接错误: $e');
+      rethrow;
+    }
   }
 
   Future<void> writeAudioData(String code, int punc, Uint8List audioData) async {
@@ -82,99 +99,64 @@ class XunFeiRTASR {
       isFirst = false;
       this.code = code;
       this.punc = punc;
-      _recordedData.clear();
+      _isPaused = false;
     }
 
-    _recordedData.add(audioData);
+    if (_isPaused || !_isConnected) return;
 
-    if (_webSocket == null || _webSocket!.readyState != html.WebSocket.OPEN) {
-      print('${getCurrentTimeStr()} WebSocket 已关闭，跳过数据发送');
-      return;
+    try {
+      if (audioData.isEmpty) return;
+
+      if (audioData.length > chunkedSize) {
+        final chunks = audioData.length ~/ chunkedSize;
+        for (int i = 0; i < chunks; i++) {
+          final chunk = audioData.sublist(
+            i * chunkedSize,
+            (i + 1) * chunkedSize,
+          );
+          _sendBinary(chunk);
+        }
+        final remaining = audioData.sublist(chunks * chunkedSize);
+        if (remaining.isNotEmpty) {
+          _sendBinary(remaining);
+        }
+      } else {
+        _sendBinary(audioData);
+      }
+    } catch (e) {
+      print('${getCurrentTimeStr()} 音频处理错误: $e');
     }
-
-    _webSocket!.sendTypedData(audioData);
   }
 
-  Future<void> stopWriteData() async {
+  void _sendBinary(Uint8List data) {
+    if (_channel?.closeCode != null) return;
+    try {
+      _channel?.sink.add(data);
+    } catch (e) {
+      print('${getCurrentTimeStr()} 发送错误: $e');
+      _isConnected = false;
+    }
+  }
+
+  Future<void> stopChannel() async {
     isFirst = true;
-    if (_webSocket != null && _webSocket!.readyState == html.WebSocket.OPEN) {
-      _webSocket!.send(jsonEncode({'end': true}));
-      _webSocket!.close();
+    _isPaused = false;
+
+    try {
+      if (_channel?.closeCode == null) {
+        _channel?.sink.add('{"end": true}');
+        await _channel?.sink.close();
+      }
+    } catch (e) {
+      print('${getCurrentTimeStr()} 关闭错误: $e');
+    } finally {
+      _isConnected = false;
+      _channel = null;
     }
-
-    if (_recordedData.length > 0) {
-      // final filename = 'recorded_audio_${DateTime.now().millisecondsSinceEpoch}.wav';
-      // saveAudioToFile(_recordedData.toBytes(), filename);
-      _recordedData.clear();
-    }
   }
 
-  Future<void> stopRecording() async {
-    await stopWriteData();
-  }
-
-  Future<void> pauseRecording() async {
-    print('⚠️ Web端不支持 pauseRecording');
-  }
-
-  Future<void> resumeRecording() async {
-    print('⚠️ Web端不支持 resumeRecording');
-  }
-
-  /// 把 PCM 数据封装成 WAV 并保存为文件
-  void saveAudioToFile(Uint8List pcmData, String filename) {
-    final wavData = _convertPCMToWAV(pcmData);
-    final blob = html.Blob([wavData]);
-    final url = html.Url.createObjectUrlFromBlob(blob);
-    final anchor = html.AnchorElement(href: url)
-      ..setAttribute("download", filename)
-      ..click();
-    html.Url.revokeObjectUrl(url);
-    print('${getCurrentTimeStr()} 保存音频文件: $filename');
-  }
-
-  Uint8List _convertPCMToWAV(Uint8List pcmData, {
-    int sampleRate = 16000,
-    int numChannels = 1,
-    int bitsPerSample = 16,
-  }) {
-    int byteRate = sampleRate * numChannels * bitsPerSample ~/ 8;
-    int blockAlign = numChannels * bitsPerSample ~/ 8;
-    int dataSize = pcmData.length;
-
-    final header = BytesBuilder();
-    header.add(ascii.encode('RIFF')); // Chunk ID
-    header.add(_uint32ToBytes(36 + dataSize)); // Chunk Size
-    header.add(ascii.encode('WAVE')); // Format
-    header.add(ascii.encode('fmt ')); // Subchunk1 ID
-    header.add(_uint32ToBytes(16)); // Subchunk1 Size (16 for PCM)
-    header.add(_uint16ToBytes(1)); // Audio Format (1 = PCM)
-    header.add(_uint16ToBytes(numChannels)); // Num Channels
-    header.add(_uint32ToBytes(sampleRate)); // Sample Rate
-    header.add(_uint32ToBytes(byteRate)); // Byte Rate
-    header.add(_uint16ToBytes(blockAlign)); // Block Align
-    header.add(_uint16ToBytes(bitsPerSample)); // Bits per Sample
-    header.add(ascii.encode('data')); // Subchunk2 ID
-    header.add(_uint32ToBytes(dataSize)); // Subchunk2 Size
-
-    final wavData = BytesBuilder();
-    wavData.add(header.toBytes());
-    wavData.add(pcmData);
-
-    return wavData.toBytes();
-  }
-
-  Uint8List _uint16ToBytes(int value) {
-    final bytes = ByteData(2);
-    bytes.setUint16(0, value, Endian.little);
-    return bytes.buffer.asUint8List();
-  }
-
-  Uint8List _uint32ToBytes(int value) {
-    final bytes = ByteData(4);
-    bytes.setUint32(0, value, Endian.little);
-    return bytes.buffer.asUint8List();
-  }
+  void pause() => _isPaused = true;
+  void resume() => _isPaused = false;
 
   static String getHandShakeParams(String appId, String secretKey) {
     String ts = (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
@@ -183,9 +165,7 @@ class XunFeiRTASR {
     return "?appid=$appId&ts=$ts&signa=${Uri.encodeComponent(signa)}";
   }
 
-  static String getCurrentTimeStr() {
-    return sdf.format(DateTime.now());
-  }
+  static String getCurrentTimeStr() => sdf.format(DateTime.now());
 
   static String getContent(String message) {
     final resultBuilder = StringBuffer();

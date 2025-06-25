@@ -52,7 +52,9 @@ class MyApp extends ConsumerWidget {
       ZegoConfig.instance.room = params['room'];
       ZegoConfig.instance.leftLanguageIndex = params['leftLanguageIndex'];
       ZegoConfig.instance.rightLanguageIndex = params['rightLanguageIndex'];
-
+      print("userId:" + params['userId'] + ",userName:" + params['userName'] + ",room:" + params['room'] +
+          ",leftLanguageIndex:" + params['leftLanguageIndex'] + ",rightLanguageIndex:" + params['rightLanguageIndex']
+      );
     } catch (e) {
       print("分享链接解码失败：$e");
     }

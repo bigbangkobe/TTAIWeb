@@ -62,8 +62,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   ZegoPublisherState _publisherState = ZegoPublisherState.NoPublish;
   ZegoPlayerState _playerState = ZegoPlayerState.NoPlay;
   late ZegoUser _localZegoUser;
-  late ZegoUser _remoteZegoUser;
-  // ZegoMediaPlayer? _mediaPlayer;
 
 
   @override
@@ -152,18 +150,22 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     //User status update
     ZegoExpressEngine.onRoomUserUpdate = (String roomID, ZegoUpdateType updateType, List<ZegoUser> userList) {
       userList.forEach((user) {
-        if(_localZegoUser.userID != user.userID){
-          _remoteZegoUser = user;
-
-        }else{
-          _localZegoUser = user;
-        }
         var userID = user.userID;
         var userName = user.userName;
         print('🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType userID: $userID userName: $userName');
       });
       print('🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType count: ${userList.length}');
-
+      if(updateType == ZegoUpdateType.Add){
+        setState(() {
+          _localRTASR.startChannel();
+          _remoteRTASR.startChannel();
+        });
+      }else if(updateType == ZegoUpdateType.Delete){
+        setState(() {
+          _localRTASR.stopChannel();
+          _remoteRTASR.stopChannel();
+        });
+      }
     };
 
     //Stream status update
@@ -210,7 +212,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       // 处理本地PCM音频数据...
       if(mounted){
         processLocalAudio(
-          convertFloat32ToInt16(data),
+          data,
           leftLanguage['code'], // 使用左侧选择的语言识别
         );
       }
@@ -222,7 +224,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       // 处理特定流的远端音频数据...
       if(mounted){
         processRemoteAudio(
-          convertFloat32ToInt16(data),
+          data,
           rightLanguage['code'], // 使用左侧选择的语言识别
         );
       }
@@ -299,16 +301,16 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     }
 
     if (kIsWeb) {
-      ZegoExpressEngine.instance.createCanvasView((viewID) {
+      ZegoExpressEngine.instance.createCanvasView((viewID) async{
         _previewViewID = viewID;
-        _startPreview(viewID);
+        await _startPreview(viewID);
       }).then((widget) {
         setState(() {
           _previewViewWidget = widget;
         });
       });
     } else {
-      ZegoExpressEngine.instance.startPreview();
+      await ZegoExpressEngine.instance.startPreview();
     }
   }
 
@@ -324,7 +326,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     // Developers should destroy the [CanvasView] after
     // [stopPublishingStream] or [stopPreview] to release resource and avoid memory leaks
     await ZegoExpressEngine.instance.destroyCanvasView(_previewViewID);
-    await _localRTASR.stopWriteData();
     setState(() => _previewViewWidget = null);
   }
 
@@ -403,7 +404,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   Future<void> stopPlayingStream(String streamID) async{
     await ZegoExpressEngine.instance.stopPlayingStream(streamID);
     await clearPlayView();
-    await _remoteRTASR.stopWriteData();
   }
 
   // MARK: - Exit
@@ -519,23 +519,23 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     _remoteRTASR.writeAudioData(lang, 0, pcmData);
   }
 
-  Uint8List convertFloat32ToInt16(Uint8List float32Bytes) {
-    final float32List = float32Bytes.buffer.asFloat32List();
-    final int16List = Int16List(float32List.length);
-
-    for (int i = 0; i < float32List.length; i++) {
-      double sample = float32List[i];
-
-      // Clamp between -1.0 and 1.0 (safe range)
-      if (sample < -1.0) sample = -1.0;
-      if (sample > 1.0) sample = 1.0;
-
-      // Scale to 16-bit PCM range
-      int16List[i] = (sample * 32767).toInt();
-    }
-
-    return Uint8List.view(int16List.buffer);
-  }
+  // Uint8List convertFloat32ToInt16(Uint8List float32Bytes) {
+  //   final float32List = float32Bytes.buffer.asFloat32List();
+  //   final int16List = Int16List(float32List.length);
+  //
+  //   for (int i = 0; i < float32List.length; i++) {
+  //     double sample = float32List[i];
+  //
+  //     // Clamp between -1.0 and 1.0 (safe range)
+  //     if (sample < -1.0) sample = -1.0;
+  //     if (sample > 1.0) sample = 1.0;
+  //
+  //     // Scale to 16-bit PCM range
+  //     int16List[i] = (sample * 32767).toInt();
+  //   }
+  //
+  //   return Uint8List.view(int16List.buffer);
+  // }
 
 
   bool isAllZero(Uint8List? buffer) {
@@ -636,8 +636,8 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   Future<void> _cleanupEngine() async {
     WidgetsBinding.instance.removeObserver(this);
     stopListenEvent();
-    _localRTASR.stopWriteData();
-    _remoteRTASR.stopWriteData();
+    _localRTASR.stopChannel();
+    _remoteRTASR.stopChannel();
     ZegoExpressEngine.destroyEngine()
         .then((value) => print('async destroy success'));
   }
@@ -1093,7 +1093,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     } else {
       message.originalText = finalResult;
       ref.read(conversationProviderTranslate.notifier).updateMessage(message);
-      print("emmmmmm 调用翻译接口");
+      // print("emmmmmm 调用翻译接口");
       XunFeiMachineTranslation.sendMessage(
         finalResult,
         isLeft
