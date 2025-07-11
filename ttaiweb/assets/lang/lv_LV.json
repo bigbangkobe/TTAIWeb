@@ -212,7 +212,7 @@
 
   "文件已删除": "Fails ir dzēsts",
 
-  "您确定要删除此录音文件吗？": "Vai tiešām vēlaties dzēst šo audio failu?",
+  "您确定要删除此文件吗？": "Vai tiešām vēlaties dzēst šo audio failu?",
 
   "删除": "Dzēst",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Neizdevās ielādēt privātuma politiku.",
   "暂无隐私政策内容": "Privātuma politikas saturs pašlaik nav pieejams.",
   "权限请求结果": "Atļaujas pieprasījuma rezultāts",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Laipni lūdzam 'Doujiao' lietotnē. Lai iegūtu labāku pakalpojumu, lūdzu, piekrītiet nosacījumiem.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "ObtuneAI Laipni lūdzam 'Doujiao' lietotnē. Lai iegūtu labāku pakalpojumu, lūdzu, piekrītiet nosacījumiem.",
   "AI智能体": "AI intelekts",
   "翻译机": "Tulkotāja ierīce",
   "双耳模式": "Divu ausu režīms",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Noklikšķiniet uz pogas, lai sāktu runāt",
   "请说中文...": "Lūdzu, runājiet ķīniešu valodā...",
   "将翻译为英文...": "Tiek tulkots angļu valodā...",
-  "戴左耳机的人说": "Persona ar kreisajā ausī austiņu saka",
-  "戴右耳机的人说": "Persona ar labajā ausī austiņu saka",
+  "左耳机": "Persona ar kreisajā ausī austiņu saka",
+  "右耳机": "Persona ar labajā ausī austiņu saka",
   "位置权限说明": "Atrašanās vietas atļaujas skaidrojums",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Lai palīdzētu atrast pazaudētās Bluetooth austiņas, mums ir nepieciešama piekļuve jūsu atrašanās vietai",
   "麦克风权限说明": "Mikrofona atļaujas skaidrojums",
@@ -335,5 +335,31 @@
   "无法打开应用": "Neizdevās atvērt lietotni",
   "商城": "Veikals",
   "是否要跳转到官方应用？": "Vai vēlaties pāriet uz oficiālo lietotni?",
-  "是否要跳转到商城应用？": "Vai vēlaties pāriet uz veikala lietotni?"
+  "是否要跳转到商城应用？": "Vai vēlaties pāriet uz veikala lietotni?",
+  "新品": "Jauni produkti",
+  "节点选择": "Katra mezgla izvēle",
+  "中国": "Ķīna",
+  "中国香港": "Honkonga",
+  "美国": "Amerikas Savienotās Valstis",
+  "新加坡": "Singapūra",
+  "澳大利亚": "Austrālija",
+  "马来西亚": "Malēzija",
+  "旅行": "Ceļojums",
+  "会议": "Sanāksme",
+  "个人场景": "Personīgā ainava",
+  "专业功能": "Profesionālās funkcijas",
+  "温馨提醒": "Sirsnīgs atgādinājums",
+  "不再提示": "Vairs netiks parādīti paziņojumi",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Abām pusēm ir austiņas, un viens cilvēks izmanto telefonu. Persona ar austiņām runā un tulko, pēc tam tas tiek atskaņots otram cilvēkam pa telefonu, kurš runā uz telefonu un tulko, un tas tiek atskaņots otram cilvēkam ar austiņām.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Abām pusēm ir pa vienai austiņai, mans runājot tulkojums tiks atskaņots otrai personai austiņās, un viņu runa pēc tulkojuma tiks atskaņota manās austiņās.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Abas puses runā tieši, mana runa tiek tulkota un atskaņota otram personai caur telefonu, pēc tam otra persona runā un tulko caur telefonu, lai es dzirdētu, sasniedzot abpusēju tulkošanu.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Kad nepieciešams klausīties ārzemju runu, ārzemju filmas utt., noklikšķiniet uz sākuma pogas, runātāja valoda tiks tūlītēji tulkota un atskaņota manās austiņās, un tulkojums tiks ierakstīts programmatūrā.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Piedaloties sanāksmē, noklikšķiniet uz ierakstīšanas pogas, lai uzsāktu sanāksmes satura ierakstīšanu, runas saturs tiks tūlītēji pārvērsts tekstā, pēc tam tas tiks saglabāts un būs iespēja eksportēt ieraksta failu, vienlaikus ģenerējot AI sanāksmes kopsavilkumu.",
+
+  "温馨提示": "Draudzīgs atgādinājums",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Lūdzu, dodieties uz sistēmas iestatījumiem, lai pievienotu Bluetooth ierīci. Ja jau ir pievienota neautorizēta ierīce, vispirms to atvienojiet un pēc tam mēģiniet vēlreiz.",
+
+  "立刻前往": "Dodies tagad"
+
 }

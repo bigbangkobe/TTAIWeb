@@ -212,7 +212,7 @@
 
   "文件已删除": "File parantos dihapus",
 
-  "您确定要删除此录音文件吗？": "Naha anjeun yakin badé ngahapus file rékaman ieu?",
+  "您确定要删除此文件吗？": "Naha anjeun yakin badé ngahapus file rékaman ieu?",
 
   "删除": "Hapus",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Gagal memuat kebijakan privasi",
   "暂无隐私政策内容": "Tidak ada isi kebijakan privasi",
   "权限请求结果": "Hasil permintaan izin",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Selamat datang di aplikasi Doujiao. Agar kami dapat memberikan layanan yang lebih baik, harap setujui terlebih dahulu.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Selamat datang di aplikasi ObtuneAI. Agar kami dapat memberikan layanan yang lebih baik, harap setujui terlebih dahulu.",
   "AI智能体": "AI Agent",
   "翻译机": "Penerjemah",
   "双耳模式": "Mode Dual Ear",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Ketok tombol pikeun ngamimitian nyarios",
   "请说中文...": "Mangga nyarios nganggo basa Cina...",
   "将翻译为英文...": "Sedang ditarjamahkeun ka basa Inggris...",
-  "戴左耳机的人说": "Jalma anu maké headset kénca nyarios",
-  "戴右耳机的人说": "Jalma anu maké headset katuhu nyarios",
+  "左耳机": "Jalma anu maké headset kénca nyarios",
+  "右耳机": "Jalma anu maké headset katuhu nyarios",
   "位置权限说明": "Panjelasan idin lokasi",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Pikeun milarian headset Bluetooth nu leungit, urang peryogi idin lokasi anjeun",
   "麦克风权限说明": "Panjelasan idin mikropon",
@@ -335,5 +335,29 @@
   "无法打开应用": "Gagal muka aplikasi",
   "商城": "Toko",
   "是否要跳转到官方应用？": "Naha anjeun hoyong pindah ka aplikasi resmi?",
-  "是否要跳转到商城应用？": "Naha anjeun hoyong pindah ka aplikasi toko?"
+  "是否要跳转到商城应用？": "Naha anjeun hoyong pindah ka aplikasi toko?",
+  "新品": "Produk anyar",
+  "节点选择": "Pilihan simpul",
+  "中国": "Tiongkok",
+  "中国香港": "Hong Kong, Tiongkok",
+  "美国": "Amérika Sarikat",
+  "新加坡": "Singapura",
+  "澳大利亚": "Austrália",
+  "马来西亚": "Malaysia",
+  "旅行": "Perjalanan",
+  "会议": "Mesyuarat",
+  "个人场景": "Senario peribadi",
+  "专业功能": "Fungsi profesional",
+  "温馨提醒": "Peringatan mesra",
+  "不再提示": "Jangan berikan peringatan lagi",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Kedua-dua pihak, satu memakai fon kepala dan satu lagi menggunakan telefon bimbit. Pihak yang memakai fon kepala bercakap dan menterjemah, kemudian memainkannya melalui telefon untuk pihak yang lain mendengarnya. Pihak yang lain bercakap ke telefon dan menterjemah, kemudian memainkannya melalui fon kepala untuk pihak yang memakai fon kepala mendengarnya.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Kedua-dua pihak memakai satu fon kepala, apabila saya bercakap, terjemahan akan dimainkan secara langsung dalam fon kepala pihak yang lain. Apabila pihak yang lain bercakap, terjemahan akan dimainkan dalam fon kepala saya.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Kedua-dua pihak berkomunikasi secara bersemuka, saya bercakap melalui telefon dan menterjemah untuk pihak yang lain mendengarnya. Seterusnya pihak yang lain bercakap melalui telefon dan menterjemah untuk saya mendengarnya, mencapai komunikasi terjemahan dua hala.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Apabila perlu mendengar ucapan dalam bahasa asing secara langsung, filem dalam bahasa asing, dan sebagainya, klik butang mula, bahasa orang yang bercakap akan diterjemah secara langsung ke fon kepala saya dan kandungan terjemahan akan disimpan dalam perisian.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Semasa menyertai mesyuarat, klik butang rakaman untuk mula merakam kandungan mesyuarat, kandungan ucapan akan ditukar kepada teks secara langsung, selepas selesai disimpan dan fail rakaman boleh dieksport, sambil menghasilkan ringkasan mesyuarat menggunakan AI.",
+
+  "温馨提示": "Pangeling merenah",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Mangga buka setélan sistem pikeun nyambungkeun alat Bluetooth. Lamun aya alat nu teu diidinan geus nyambung, punteun leupaskeun heula, tuluy cobian deui."
+
 }

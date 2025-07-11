@@ -212,7 +212,7 @@
 
   "文件已删除": "El fitxer s'ha eliminat",
 
-  "您确定要删除此录音文件吗？": "Esteu segur que voleu eliminar aquest fitxer d'àudio?",
+  "您确定要删除此文件吗？": "Esteu segur que voleu eliminar aquest fitxer d'àudio?",
 
   "删除": "Elimina",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "No s'ha pogut carregar la política de privacitat",
   "暂无隐私政策内容": "No hi ha contingut disponible per a la política de privacitat",
   "权限请求结果": "Resultat de la sol·licitud d'autorització",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Benvingut a l'aplicació Doujiao. Per oferir-te un millor servei, si us plau, accepta primer i marca la casella",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Benvingut a l'aplicació ObtuneAI. Per oferir-te un millor servei, si us plau, accepta primer i marca la casella",
   "AI智能体": "Agent intel·ligent AI",
   "翻译机": "Traductor",
   "双耳模式": "Mode de doble auricular",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Fes clic al botó per començar a parlar",
   "请说中文...": "Si us plau, parla en xinès...",
   "将翻译为英文...": "Es traduirà a l’anglès...",
-  "戴左耳机的人说": "La persona amb l’auricular esquerre ha dit",
-  "戴右耳机的人说": "La persona amb l’auricular dret ha dit",
+  "左耳机": "La persona amb l’auricular esquerre ha dit",
+  "右耳机": "La persona amb l’auricular dret ha dit",
   "位置权限说明": "Explicació del permís de localització",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Per ajudar-te a trobar els auriculars Bluetooth perduts, necessitem accés a la teva ubicació",
   "麦克风权限说明": "Explicació del permís de micròfon",
@@ -335,5 +335,43 @@
   "无法打开应用": "No s'ha pogut obrir l'aplicació",
   "商城": "Botiga",
   "是否要跳转到官方应用？": "Voleu anar a l'aplicació oficial?",
-  "是否要跳转到商城应用？": "Voleu anar a l'aplicació de la botiga?"
+  "是否要跳转到商城应用？": "Voleu anar a l'aplicació de la botiga?",
+  "新品": "Producte nou",
+  "节点选择": "Selecció de node",
+  "中国": "Xina",
+  "中国香港": "Hong Kong",
+  "美国": "Estats Units",
+  "新加坡": "Singapur",
+  "澳大利亚": "Austràlia",
+  "马来西亚": "Malàisia",
+  "旅行": "Viatge",
+  "会议": "Reunió",
+  "个人场景": "Escenari personal",
+  "专业功能": "Funcions professionals",
+  "温馨提醒": "Recordatori amable",
+  "不再提示": "No tornar a recordar",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Un porta auriculars i l'altre utilitza el telèfon. La persona amb l'auricular parla, es tradueix i es reprodueix al telèfon perquè l'altra persona l'escolti; l'altra persona parla al telèfon, es tradueix i es reprodueix a l'auricular.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Cada part porta un auricular. Quan parlo, es tradueix i es reprodueix immediatament a l'auricular de l'altra persona; quan parla l'altra persona, es tradueix i es reprodueix al meu auricular.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Les dues parts es comuniquen cara a cara; jo parlo a través del telèfon, es tradueix i es reprodueix per a l'altra persona, després l'altra persona fa el mateix, aconseguint una comunicació traduïda mútua.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Quan cal escoltar discursos en llengua estrangera o pel·lícules en temps real, feu clic al botó d'inici; la llengua del parlant es traduirà en temps real als meus auriculars i el contingut traduït es registrarà a l'aplicació.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Quan assistiu a una reunió, feu clic al botó de gravació per començar a enregistrar el contingut; el que es diu es convertirà en text en temps real i, en acabar, es podrà desar, exportar l'arxiu d'àudio i generar un resum de la reunió amb IA.",
+
+
+  "温馨提示": "Recordatori amable",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Si us plau, ves a la configuració del sistema per connectar un dispositiu Bluetooth. Si ja hi ha un dispositiu no autoritzat connectat, desconnecta’l primer i torna-ho a intentar.",
+
+  "立刻前往": "Ves ara"
+
+
 }

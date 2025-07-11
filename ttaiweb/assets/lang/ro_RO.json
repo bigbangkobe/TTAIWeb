@@ -212,7 +212,7 @@
 
   "文件已删除": "Fișierul a fost șters",
 
-  "您确定要删除此录音文件吗？": "Sunteți sigur că doriți să ștergeți acest fișier de înregistrare?",
+  "您确定要删除此文件吗？": "Sunteți sigur că doriți să ștergeți acest fișier de înregistrare?",
 
   "删除": "Șterge",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Eșec la încărcarea politicii de confidențialitate",
   "暂无隐私政策内容": "Nu există conținut al politicii de confidențialitate disponibil",
   "权限请求结果": "Rezultatul cererii de permisiune",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Bine ați venit la aplicația Feijão, pentru a vă oferi un serviciu mai bun, vă rugăm să acceptați termenii mai întâi",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "ObtuneAI Bine ați venit la aplicația Feijão, pentru a vă oferi un serviciu mai bun, vă rugăm să acceptați termenii mai întâi",
   "AI智能体": "Agent Inteligent AI",
   "翻译机": "Mașina de traducere",
   "双耳模式": "Modul cu două urechi",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Apasă butonul pentru a începe să vorbești",
   "请说中文...": "Vă rugăm să vorbiți în chineză...",
   "将翻译为英文...": "Traducere în engleză...",
-  "戴左耳机的人说": "Persoana cu căști în urechea stângă spune",
-  "戴右耳机的人说": "Persoana cu căști în urechea dreaptă spune",
+  "左耳机": "Persoana cu căști în urechea stângă spune",
+  "右耳机": "Persoana cu căști în urechea dreaptă spune",
   "位置权限说明": "Explicație despre permisiunea de localizare",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Pentru a vă ajuta să găsiți căștile Bluetooth pierdute, avem nevoie de permisiunea de localizare",
   "麦克风权限说明": "Explicație despre permisiunea microfonului",
@@ -335,5 +335,29 @@
   "无法打开应用": "Nu s-a reușit deschiderea aplicației",
   "商城": "Magazin",
   "是否要跳转到官方应用？": "Doriți să accesați aplicația oficială?",
-  "是否要跳转到商城应用？": "Doriți să accesați aplicația magazin?"
+  "是否要跳转到商城应用？": "Doriți să accesați aplicația magazin?",
+  "新品": "Produse noi",
+  "节点选择": "Selecția nodului",
+  "中国": "China",
+  "中国香港": "Hong Kong, China",
+  "美国": "Statele Unite",
+  "新加坡": "Singapore",
+  "澳大利亚": "Australia",
+  "马来西亚": "Malasia",
+  "旅行": "Călătorie",
+  "会议": "Ședință",
+  "个人场景": "Scenariul personal",
+  "专业功能": "Funcții profesionale",
+  "温馨提醒": "Aducere aminte prietenoasă",
+  "不再提示": "Nu mai reaminti",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Ambele părți, una poartă căști iar cealaltă folosește telefonul. Persoana cu căști vorbește și traduce, apoi redă prin telefon pentru cealaltă persoană să asculte. Cealaltă persoană vorbește în telefon și traduce, iar apoi redă prin căști pentru persoana cu căștile.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Ambele părți poartă câte o cască, iar atunci când vorbesc, traducerea este redată în timp real în căștile celeilalte părți. Când cealaltă parte vorbește, traducerea este redată în căștile mele în timp real.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Ambele părți comunică față în față, eu vorbesc prin telefon și traduc pentru a reda pentru cealaltă persoană să asculte, apoi cealaltă persoană vorbește prin telefon și traduce pentru a reda pentru mine să ascult, permițând comunicarea prin traducere reciprocă.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Când trebuie să ascult în timp real discursuri în limbi străine, filme în limbi străine etc., apasă pe butonul de start, iar limba vorbitorului va fi tradusă în timp real în căștile noastre, iar traducerea va fi înregistrată în software.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Când participi la o ședință, apasă pe butonul de înregistrare pentru a începe să înregistrezi conținutul ședinței, iar conținutul vorbit va fi transformat în text în timp real. După încheiere, acesta va fi salvat și fișierele de înregistrare vor putea fi exportate, generând în același timp un rezumat al ședinței cu ajutorul IA.",
+
+  "温馨提示": "Reamintire prietenoasă",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Te rugăm să accesezi setările sistemului pentru a conecta un dispozitiv Bluetooth. Dacă un dispozitiv neautorizat este deja conectat, deconectează-l mai întâi și apoi încearcă din nou."
+
 }

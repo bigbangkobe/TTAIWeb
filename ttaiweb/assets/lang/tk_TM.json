@@ -212,7 +212,7 @@
 
   "文件已删除": "Faýl öçürildi",
 
-  "您确定要删除此录音文件吗？": "Bu ses ýazdymy faýlyny öçürmek isleýändiňizi anykmy?",
+  "您确定要删除此文件吗？": "Bu ses ýazdymy faýlyny öçürmek isleýändiňizi anykmy?",
 
   "删除": "Öçür",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Gizlinlik syýasatyny ýüklemek üstünlikli bolmady",
   "暂无隐私政策内容": "Gizlinlik syýasatynyň mazmuny ýok",
   "权限请求结果": "Hukuk soragynyň netijesi",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Doujiao aplikasiyasyny ulanmak üçin hoş geldiňiz, size has gowy hyzmatlar bermek üçin ilki bilen razy boluň.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "ObtuneAI aplikasiyasyny ulanmak üçin hoş geldiňiz, size has gowy hyzmatlar bermek üçin ilki bilen razy boluň.",
   "AI智能体": "AI agenti",
   "翻译机": "Tercüme maşyny",
   "双耳模式": "Iki gulakly rezhim",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Gürlemäge başlamak üçin düwmä basyň",
   "请说中文...": "Hytaý dilinde gürläň...",
   "将翻译为英文...": "Iňlis diline terjime edilýär...",
-  "戴左耳机的人说": "Çep gulakçygy dakynan adam gepleýär",
-  "戴右耳机的人说": "Sag gulakçygy dakynan adam gepleýär",
+  "左耳机": "Çep gulakçygy dakynan adam gepleýär",
+  "右耳机": "Sag gulakçygy dakynan adam gepleýär",
   "位置权限说明": "Ýerleşiş rugsadynyň düşündirişi",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Ýitiren bluetooth gulaklygyňyzy tapmaga kömek etmek üçin ýerleşiş rugsady gerek",
   "麦克风权限说明": "Mikrofon rugsadynyň düşündirişi",
@@ -335,5 +335,30 @@
   "无法打开应用": "Programma açylmady",
   "商城": "Dükan",
   "是否要跳转到官方应用？": "Resmi programmy açmak isleýärsiňizmi?",
-  "是否要跳转到商城应用？": "Dükan programmasyna geçmek isleýärsiňizmi?"
+  "是否要跳转到商城应用？": "Dükan programmasyna geçmek isleýärsiňizmi?",
+  "新品": "Täze harytlar",
+  "节点选择": "Togşulama saýlamak",
+  "中国": "Hytaý",
+  "中国香港": "Hytaý Hongkongy",
+  "美国": "Amerikanyň Birleşen Ştatlary",
+  "新加坡": "Singapur",
+  "澳大利亚": "Awstraliýa",
+  "马来西亚": "Malaýziýa",
+  "旅行": "Syýahat",
+  "会议": "Maslahat",
+  "个人场景": "Şahsy ýagdaý",
+  "专业功能": "Iş-hünär aýratynlyklary",
+  "温馨提醒": "Ýagşy pikirler",
+  "不再提示": "Görkezmäň",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Iki tarapdan bir adam gulaklyk takýar, beýleki adam bolsa telefon ulanylýar. Gulaklyk takan adam gürrüň berýär we terjime edýär, soňra telefon arkaly garşy tarapa aýdyp berilýär. Karşy tarap telefon bilen gürrüň berýär we terjime edýär, soňra gulaklyk arkaly gulaklyk takan tarapa aýdyp berilýär.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Iki tarap hem bir gulaklyk takýar, men gürrüň berýärin we terjime edilenden soň, derrew garşy tarapyň gulaklygynda oýun edýär, garşy tarap gürrüň berýär we terjime edilenden soň, meniň gulaklygymda derrew oýun edýär.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Iki tarap hem ýüzbe-ýüz habarlaşýarlar, men telefon arkaly gürrüň berýärin we terjime edip, garşy tarapa diňlemäge berýärin, soňra garşy tarap telefon arkaly gürrüň berýär we terjime edip, meniň diňlemek üçin berilýär. Şeýlelik bilen, karşılıklı terjime arkaly habarlaşyk amala aşyrylar.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Daşary dillerde gürrüňleri ýa-da kinolary derrew diňlemek zerur bolanda, başlatmak düwmesine basyň, gürrüň berijiniň dili derrew meniň gulaklygymda terjime edilýär, şonuň bilen bir wagtda terjime edilen mazmun programmada ýazga alnar.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Maslahata gatnaşanda, ýazgy düwmesine basyň, maslahat mazmunyny ýazga almaga başlaň, gürrüňleriň mazmuny derrew ýazgyya öwrülýär, soňra ol saklanýar we ýazgy faýlini çykarmak bolýar, şol bir wagtda AI maslahatyň düzümine gözegçilik edýär.",
+
+  "温馨提示": "Mähirli ýatlatma",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Bluetooth enjamyny birikdirmek üçin ulgam sazlamalaryna geçiň. Eger tassyklanmadyk enjam eýýäm birikdirilen bolsa, ilki bilen ony aýryň we soňra täzeden synanyşyň."
+
+
 }

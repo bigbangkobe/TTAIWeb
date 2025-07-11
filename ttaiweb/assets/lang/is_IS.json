@@ -212,7 +212,7 @@
 
   "文件已删除": "Skrá hefur verið eytt",
 
-  "您确定要删除此录音文件吗？": "Ertu viss um að þú viljir eyða þessari upptökuskrá?",
+  "您确定要删除此文件吗？": "Ertu viss um að þú viljir eyða þessari upptökuskrá?",
 
   "删除": "Eyða",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Tókst ekki að hlaða persónuverndarstefnu",
   "暂无隐私政策内容": "Engin persónuverndarstefna til staðar",
   "权限请求结果": "Niðurstaða leyfisbeiðni",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Velkomin/n í Doujiao APP. Til að veita þér betri þjónustu, vinsamlegast samþykktu fyrst.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Velkomin/n í ObtuneAI APP. Til að veita þér betri þjónustu, vinsamlegast samþykktu fyrst.",
   "AI智能体": "Vitsmunakerfi AI",
   "翻译机": "Þýðingarvél",
   "双耳模式": "Tvíeyra mód",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Smelltu á hnappinn til að byrja að tala",
   "请说中文...": "Vinsamlegast talaðu kínversku...",
   "将翻译为英文...": "Þýðir yfir á ensku...",
-  "戴左耳机的人说": "Sá sem er með heyrnartól vinstra megin sagði",
-  "戴右耳机的人说": "Sá sem er með heyrnartól hægra megin sagði",
+  "左耳机": "Sá sem er með heyrnartól vinstra megin sagði",
+  "右耳机": "Sá sem er með heyrnartól hægra megin sagði",
   "位置权限说明": "Útskýring á staðsetningarheimildum",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Til að hjálpa þér að finna týnd Bluetooth heyrnartól þurfum við að fá staðsetningarheimildir þínar",
   "麦克风权限说明": "Útskýring á hljóðnemaleyfi",
@@ -335,5 +335,41 @@
   "无法打开应用": "Ekki hægt að opna forritið",
   "商城": "Verslun",
   "是否要跳转到官方应用？": "Viltu fara í opinbera forritið?",
-  "是否要跳转到商城应用？": "Viltu fara í verslunarforritið?"
+  "是否要跳转到商城应用？": "Viltu fara í verslunarforritið?",
+  "新品": "Nýjar vörur",
+  "节点选择": "Valkostur hnút",
+  "中国": "Kína",
+  "中国香港": "Hong Kong",
+  "美国": "Bandaríki Norður-Ameríku",
+  "新加坡": "Singapúr",
+  "澳大利亚": "Ástralía",
+  "马来西亚": "Malasía",
+  "旅行": "Ferðalag",
+  "会议": "Fundur",
+  "个人场景": "Persónuleg svið",
+  "专业功能": "Faglegar eiginleikar",
+  "温馨提醒": "Vinaleg áminning",
+  "不再提示": "Ekki minna mig aftur",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Ein af aðilunum notar heyrnartól en hinn notar síma. Sá sem notar heyrnartólin talar og þýðing er spiluð fyrir hinn í gegnum símann, meðan hinn talar í síma og þýðing er spiluð í heyrnartólin fyrir þann sem notar þau.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Báðir aðilar nota eitt heyrnartól. Þegar ég tala, verður þýðingin spiluð í rauntíma í heyrnartólum hins aðilans, og þegar hinn talar verður þýðingin spiluð í rauntíma í heyrnartólum mínum.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Báðir aðilar tala beint. Ég tala í gegnum síma og þýðingin er spiluð fyrir hinn aðilann, síðan talar hinn aðilinn einnig í gegnum síma og þýðingin er spiluð fyrir mig, þannig að það er hægt að hafa milligöngutúlkun.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Þegar þú þarft að hlusta á erlend mál í rauntíma eða erlenda kvikmyndir, ýttu á byrjunartakkann, tungumál ræðmannsins verður þýtt í rauntíma í heyrnartólin mín og þýðingartextinn verður skráður í hugbúnaðinum.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Þegar þú tekur þátt í fundi, ýttu á upptökutakkann til að byrja að skrá fundarinnihald. Talað efni verður umbreytt í texta í rauntíma, síðan verður það vistað og hægt að flytja út upptökufáls, auk þess sem AI fundarútdráttur verður búinn til.",
+
+  "温馨提示": "Vinaleg áminning",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Vinsamlegast farðu í stillingar kerfisins til að tengja Bluetooth-tæki. Ef ótækt tæki er nú þegar tengt, aftengdu það fyrst og reyndu síðan aftur.",
+
+  "立刻前往": "Farðu núna"
+
 }

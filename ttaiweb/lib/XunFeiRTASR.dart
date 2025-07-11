@@ -8,11 +8,9 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:convert/convert.dart';
 
 class XunFeiRTASR {
-  static const String appId = "c07df4ea";
-  static const String secretKey = "6c1e25af5cce05d853c30225b0f248b6";
-  static const String host = 'rtasr.xfyun.cn/v1/ws';
-  static const String baseUrl = 'wss://$host';
-  static const String origin = 'https://$host';
+  static const String appId = "b32dc8bb";
+  static const String secretKey = "f1ff6437fbf880406e05c63fb4a054d4";
+  static const String baseUrl = 'wss://naturich.top:3000/rtasr';
   static const int chunkedSize = 1280;
 
   static final DateFormat sdf = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
@@ -26,7 +24,10 @@ class XunFeiRTASR {
   Function(String)? onResult;
   Function(String)? onEndResult;
 
-  Future<void> startChannel() async {
+  String chanelName = "";
+
+  Future<void> startChannel(String name) async {
+    chanelName = name;
     final Uri url;
     if (punc == 1) {
       url = Uri.parse(
@@ -56,10 +57,24 @@ class XunFeiRTASR {
 
       _channel!.stream.listen(
             (message) {
-          final msgObj = jsonDecode(message);
+          String raw;
+          if (message is String) {
+            raw = message;
+          } else if (message is ByteBuffer) {
+            raw = utf8.decode(message.asUint8List());
+          } else if (message is List<int>) {
+            raw = utf8.decode(message);
+          } else {
+            print('emmmmmm $chanelName 未知消息类型：$message');
+            return;
+          }
+
+          print('emmmmmm $chanelName ${getCurrentTimeStr()} raw: $raw');
+          final msgObj = jsonDecode(raw);
+          print('emmmmmm $chanelName ${getCurrentTimeStr()} msg: $msgObj');
           final action = msgObj['action'];
           if (action == 'started') {
-            print('${getCurrentTimeStr()} 握手成功！sid: ${msgObj['sid']}');
+            print('emmmmmm $chanelName ${getCurrentTimeStr()} 握手成功！sid: ${msgObj['sid']}');
             _isConnected = true;
             handshakeSuccess.complete();
           } else if (action == 'result') {
@@ -72,24 +87,25 @@ class XunFeiRTASR {
               onResult?.call(result);
             }
           } else if (action == 'error') {
-            print('Error: $message');
+            print('emmmmmm $chanelName Error: $message');
             _isConnected = false;
           }
         },
         onError: (error) {
-          print('${getCurrentTimeStr()} WebSocket 错误: $error');
+          print('emmmmmm $chanelName ${getCurrentTimeStr()} WebSocket 错误: $error');
           _isConnected = false;
         },
         onDone: () {
-          print('${getCurrentTimeStr()} WebSocket 连接关闭');
+          print('emmmmmm $chanelName ${getCurrentTimeStr()} WebSocket 连接关闭');
           _isConnected = false;
         },
       );
 
       await handshakeSuccess.future;
-      print('${sdf.format(DateTime.now())} 开始发送音频数据');
+      print('emmmmmm $chanelName ${sdf.format(DateTime.now())} 开始发送音频数据');
+
     } catch (e) {
-      print('${getCurrentTimeStr()} 连接错误: $e');
+      print('emmmmmm $chanelName ${getCurrentTimeStr()} 连接错误: $e');
       rethrow;
     }
   }
@@ -101,12 +117,12 @@ class XunFeiRTASR {
       this.punc = punc;
       _isPaused = false;
     }
-
+    // print('emmmmmm ${getCurrentTimeStr()} writeAudioData发送音频数据$_isPaused,$_isConnected');
     if (_isPaused || !_isConnected) return;
-
+    // print('emmmmmm ${getCurrentTimeStr()} writeAudioData发送音频数据$audioData');
     try {
       if (audioData.isEmpty) return;
-
+      // print('emmmmmm ${getCurrentTimeStr()} writeAudioData发送音频数据,数据不为null');
       if (audioData.length > chunkedSize) {
         final chunks = audioData.length ~/ chunkedSize;
         for (int i = 0; i < chunks; i++) {
@@ -124,16 +140,18 @@ class XunFeiRTASR {
         _sendBinary(audioData);
       }
     } catch (e) {
-      print('${getCurrentTimeStr()} 音频处理错误: $e');
+      print('emmmmmm $chanelName ${getCurrentTimeStr()} 音频处理错误: $e');
     }
   }
 
   void _sendBinary(Uint8List data) {
+    // print('emmmmmm ${getCurrentTimeStr()} _sendBinary: $data');
     if (_channel?.closeCode != null) return;
     try {
+      // print('emmmmmm $chanelName ${getCurrentTimeStr()} _channel?.sink.add: $data');
       _channel?.sink.add(data);
     } catch (e) {
-      print('${getCurrentTimeStr()} 发送错误: $e');
+      print('emmmmmm $chanelName ${getCurrentTimeStr()} 发送错误: $e');
       _isConnected = false;
     }
   }
@@ -148,7 +166,7 @@ class XunFeiRTASR {
         await _channel?.sink.close();
       }
     } catch (e) {
-      print('${getCurrentTimeStr()} 关闭错误: $e');
+      print('emmmmmm $chanelName ${getCurrentTimeStr()} 关闭错误: $e');
     } finally {
       _isConnected = false;
       _channel = null;

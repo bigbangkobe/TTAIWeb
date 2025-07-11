@@ -212,7 +212,7 @@
 
   "文件已删除": "Filen er slettet",
 
-  "您确定要删除此录音文件吗？": "Er du sikker på, at du vil slette denne lydfil?",
+  "您确定要删除此文件吗？": "Er du sikker på, at du vil slette denne lydfil?",
 
   "删除": "Slet",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Kunne ikke indlæse privatlivspolitikken",
   "暂无隐私政策内容": "Ingen privatlivspolitik tilgængelig",
   "权限请求结果": "Resultat af anmodning om tilladelser",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Velkommen til Doujiao-appen. For at give dig bedre service, bedes du først acceptere og vælge",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Velkommen til ObtuneAI-appen. For at give dig bedre service, bedes du først acceptere og vælge",
   "AI智能体": "AI-agent",
   "翻译机": "Oversætter",
   "双耳模式": "Dobbelt-høretelefon mode",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Klik på knappen for at begynde at tale",
   "请说中文...": "Venligst tal kinesisk...",
   "将翻译为英文...": "Vil blive oversat til engelsk...",
-  "戴左耳机的人说": "Personen med venstre øretelefon sagde",
-  "戴右耳机的人说": "Personen med højre øretelefon sagde",
+  "左耳机": "Personen med venstre øretelefon sagde",
+  "右耳机": "Personen med højre øretelefon sagde",
   "位置权限说明": "Forklaring af lokationstilladelse",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "For at hjælpe dig med at finde dine mistede Bluetooth-høretelefoner skal vi bruge adgang til din lokation",
   "麦克风权限说明": "Forklaring af mikrofontilladelse",
@@ -335,5 +335,43 @@
   "无法打开应用": "Kunne ikke åbne appen",
   "商城": "Butik",
   "是否要跳转到官方应用？": "Vil du gå til den officielle app?",
-  "是否要跳转到商城应用？": "Vil du gå til butiksappen?"
+  "是否要跳转到商城应用？": "Vil du gå til butiksappen?",
+  "新品": "Nye produkter",
+  "节点选择": "Vælg node",
+  "中国": "Kina",
+  "中国香港": "Hong Kong",
+  "美国": "USA",
+  "新加坡": "Singapore",
+  "澳大利亚": "Australien",
+  "马来西亚": "Malaysia",
+  "旅行": "Rejse",
+  "会议": "Møde",
+  "个人场景": "Personligt scenarie",
+  "专业功能": "Professionelle funktioner",
+  "温馨提醒": "Venlig påmindelse",
+  "不再提示": "Mindre påmindelser",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "En person bærer hovedtelefoner, mens den anden bruger telefonen. Personen med hovedtelefoner taler, og det bliver oversat og afspillet via telefonen til den anden person; den anden person taler til telefonen, og det bliver oversat og afspillet til hovedtelefonerne.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Begge parter bærer et hovedtelefon. Når jeg taler, oversættes det og afspilles med det samme i den andens hovedtelefon; når den anden taler, oversættes det og afspilles med det samme i mine hovedtelefoner.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "De to parter kommunikerer ansigt til ansigt. Jeg taler gennem telefonen, og det bliver oversat og afspillet til den anden part; derefter taler den anden part gennem telefonen, og det bliver oversat og afspillet til mig, hvilket muliggør en gensidig oversættelseskommunikation.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Når der er behov for at lytte til fremmedsprog i realtid, som f.eks. fremmedsprogede taler eller film, skal du klikke på start-knappen; talerens sprog bliver straks oversat til mine hovedtelefoner, og oversættelsesindholdet bliver samtidig gemt i softwaren.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Når du deltager i et møde, klik på optageknappen for at starte optagelsen af mødeindholdet; talte ord bliver straks konverteret til tekst, og efter mødet kan det gemmes, eksporteres som lydfil og samtidig genereres et AI-mødeoversigt.",
+
+
+  "温馨提示": "Venlig påmindelse",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Gå venligst til systemindstillingerne for at tilslutte en Bluetooth-enhed. Hvis en uautoriseret enhed allerede er tilsluttet, skal du først afbryde forbindelsen og derefter prøve igen.",
+
+  "立刻前往": "Gå nu"
+
+
 }

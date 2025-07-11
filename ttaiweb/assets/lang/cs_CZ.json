@@ -212,7 +212,7 @@
 
   "文件已删除": "Soubor byl smazán",
 
-  "您确定要删除此录音文件吗？": "Jste si jisti, že chcete tento zvukový soubor smazat?",
+  "您确定要删除此文件吗？": "Jste si jisti, že chcete tento zvukový soubor smazat?",
 
   "删除": "Smazat",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Nepodařilo se načíst zásady ochrany osobních údajů",
   "暂无隐私政策内容": "Žádný obsah zásad ochrany osobních údajů není k dispozici",
   "权限请求结果": "Výsledek žádosti o oprávnění",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Vítejte v aplikaci Doujiao. Abychom vám mohli poskytnout lepší služby, prosím, nejprve souhlaste a zaškrtněte",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Vítejte v aplikaci ObtuneAI. Abychom vám mohli poskytnout lepší služby, prosím, nejprve souhlaste a zaškrtněte",
   "AI智能体": "AI agent",
   "翻译机": "Překladač",
   "双耳模式": "Režim dvojitých sluchátek",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Klikněte na tlačítko pro začátek mluvení",
   "请说中文...": "Prosím, mluvte čínsky...",
   "将翻译为英文...": "Bude přeloženo do angličtiny...",
-  "戴左耳机的人说": "Osoba s levým sluchátkem říká",
-  "戴右耳机的人说": "Osoba s pravým sluchátkem říká",
+  "左耳机": "Osoba s levým sluchátkem říká",
+  "右耳机": "Osoba s pravým sluchátkem říká",
   "位置权限说明": "Vysvětlení oprávnění k poloze",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Abychom vám pomohli najít ztracená Bluetooth sluchátka, potřebujeme oprávnění k vaší poloze",
   "麦克风权限说明": "Vysvětlení oprávnění k mikrofonu",
@@ -335,5 +335,42 @@
   "无法打开应用": "Nelze otevřít aplikaci",
   "商城": "Obchod",
   "是否要跳转到官方应用？": "Chcete přejít na oficiální aplikaci?",
-  "是否要跳转到商城应用？": "Chcete přejít do aplikace obchodu?"
+  "是否要跳转到商城应用？": "Chcete přejít do aplikace obchodu?",
+  "新品": "Nový produkt",
+  "节点选择": "Výběr uzlu",
+  "中国": "Čína",
+  "中国香港": "Hong Kong",
+  "美国": "Spojené státy",
+  "新加坡": "Singapur",
+  "澳大利亚": "Austrálie",
+  "马来西亚": "Malajsie",
+  "旅行": "Cestování",
+  "会议": "Schůze",
+  "个人场景": "Osobní scénář",
+  "专业功能": "Profesionální funkce",
+  "温馨提醒": "Přátelské připomenutí",
+  "不再提示": "Již nepřipomínat",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Jedna osoba nosí sluchátko, druhá používá telefon. Osoba se sluchátkem mluví, její řeč je přeložena a přehrána přes telefon druhé osobě; druhá osoba mluví do telefonu, překládá se a přehrává do sluchátka první osoby.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Obě strany nosí jedno sluchátko. Když mluvím, moje řeč se přeloží a ihned přehraje v druhém sluchátku; když mluví druhá strana, její řeč se přeloží a přehraje v mém sluchátku.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Obě strany komunikují tváří v tvář. Já mluvím přes telefon, překládá se a přehrává druhé straně; poté druhá strana mluví přes telefon, překládá se a přehrává mně, čímž se dosahuje vzájemné překládací komunikace.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Pokud je potřeba v reálném čase poslouchat cizojazyčný projev nebo film, klikněte na tlačítko start; řeč mluvčího bude okamžitě překládána do mých sluchátek a obsah překladu bude zároveň zaznamenán v aplikaci.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Při účasti na schůzi klikněte na tlačítko nahrávání pro zahájení záznamu obsahu schůze; mluvené slovo se v reálném čase převede na text a po skončení se uloží, umožní export zvukového souboru a zároveň vygeneruje shrnutí schůze pomocí AI.",
+
+
+  "温馨提示": "Přátelské upozornění",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Přejděte prosím do nastavení systému a připojte zařízení Bluetooth. Pokud je již připojeno neschválené zařízení, nejprve jej odpojte a poté zkuste znovu připojit.",
+
+  "立刻前往": "Jdi hned"
+
 }

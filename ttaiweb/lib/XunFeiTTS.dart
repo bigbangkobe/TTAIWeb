@@ -1,187 +1,181 @@
+import 'dart:async';
 import 'dart:convert';
-// import 'dart:io';
 import 'dart:typed_data';
+import 'dart:ui';
+
 import 'package:crypto/crypto.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:flutter_sound/flutter_sound.dart';
+import 'package:web_socket_channel/html.dart';
+import 'package:universal_html/html.dart' as html;
 
 class XunFeiTTS {
-  static const String hostUrl = 'https://tts-api.xfyun.cn/v2/tts';
-  static const String appId = 'c07df4ea';
-  static const String apiSecret = 'YTE0M2FkMTQzNTJmZDMxOWEzY2M3YjFh';
-  static const String apiKey = 'ee4977e6d32127deea72e020bc108e65';
+  // —— 配置部分 —— //
+  static const _wsBase    = 'wss://tts-api.xfyun.cn/v2/tts';
+  static const _httpBase  = 'https://tts-api.xfyun.cn/v2/tts';
+  static const _appId     = 'b32dc8bb';
+  static const _apiKey    = '0767a26bf47c15e6f701f9df9b9793e0';
+  static const _apiSecret = 'MjRhNTRhM2MyNWEyZDNjZThjZjRlMjM2';
 
-  MethodChannel methodChannel = MethodChannel('pcm_audio');
+  HtmlWebSocketChannel? _channel;
+  final List<Uint8List> _chunks = [];
 
-  String vcn = "x4_lingxiaoying_assist"; // 发音人
-  final String tte = "UTF8"; // 编码格式
-  late String filePath;
-  late WebSocketChannel _channel;
+  /// 主动开始 TTS 合成并播放
+  Future<void> startTTS({
+    required String text,
+    String vcn = 'xiaoyan',
+    VoidCallback? onDone,
+  }) async {
+    _chunks.clear();
 
-  List<int> completeAudioData = [];
-  bool wsCloseFlag = false;
+    // 1. 时间戳
+    final date = _rfc1123Date();
+    print('emmmmmm date = $date text = $text');
 
-  FlutterSoundPlayer? _player;
-  late bool isTTS = false;
+    // 2. 签名源串
+    final uri    = Uri.parse(_httpBase);
+    final origin = 'host: ${uri.host}\n'
+        'date: $date\n'
+        'GET ${uri.path} HTTP/1.1';
+    print('emmmmmm origin:\n$origin');
 
-  Future<void> startTTS(
-      String ttsText,
-      String voice,
-      Function(String filePath) callback,
-      Function() playEnd,
-      bool isPlay) async {
-    vcn = voice;
-    completeAudioData.clear();
-    filePath = "";
-    int count = 0;
-    if (isPlay) {
-      isTTS = true;
-      //_player = FlutterSoundPlayer();
-      //await _player!.openPlayer();
-      methodChannel.invokeMethod('initAudioTrack', {
-        'sampleRate': 16000,
-        'channel': 1,
-      });
-      methodChannel.setMethodCallHandler((call) async {
-        if (call.method == "playbackComplete") {
-          print("PCM播放完成");
-          playEnd();
-          await methodChannel.invokeMethod('stopAudioTrack');
-        }
-      });
-    }
-    // 初始化播放器
+    // 3. 生成 signature
+    final signature = base64.encode(
+        Hmac(sha256, utf8.encode(_apiSecret))
+            .convert(utf8.encode(origin))
+            .bytes
+    );
+    print('emmmmmm signature = $signature');
 
-    String wsUrl = await _getAuthUrl();
-    _channel = WebSocketChannel.connect(
-        Uri.parse(wsUrl.replaceFirst('https://', 'wss://')));
+    // 4. 构造 authorization
+    final authOrigin = 'api_key="$_apiKey",'
+        'algorithm="hmac-sha256",'
+        'headers="host date request-line",'
+        'signature="$signature"';
+    final authorization = base64.encode(utf8.encode(authOrigin));
+    print('emmmmmm authorization = $authorization');
 
-    _channel.stream.listen((message) {
-      _onMessage(message, callback, playEnd, isPlay);
-    }, onError: (error) {
-      print("WebSocket错误: $error");
-    }, onDone: () {
-      print("WebSocket连接关闭");
+    // 5. 构造并打印 wsUri
+    final wsUri = Uri.parse(_wsBase).replace(queryParameters: {
+      'authorization': authorization,
+      'date':          date,
+      'host':          uri.host,
+    });
+    print('emmmmmm wsUri = $wsUri');
+
+    // 6. 连接
+    _channel = HtmlWebSocketChannel.connect(wsUri.toString());
+    print('emmmmmm connecting to WebSocket…');
+
+    // 7. 接收消息
+    _channel!.stream.listen((frame) {
+      print('emmmmmm raw frame: $frame');
+
+      final msg = jsonDecode(frame as String) as Map<String, dynamic>;
+      print('emmmmmm code=${msg['code']} message=${msg['message']}');
+
+      if (msg['code'] != 0) {
+        print('emmmmmm server error, closing');
+        _channel?.sink.close();
+        return;
+      }
+
+      if (msg.containsKey('sid')) {
+        print('emmmmmm sid=${msg['sid']}');
+      }
+
+      final data = msg['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        print('emmmmmm data is null, skip');
+        return;
+      }
+
+      final status = data['status'];
+      final ced    = data['ced'];
+      final audioB64 = data['audio'] as String?;
+      print('emmmmmm status=$status ced=$ced audio.len=${audioB64?.length ?? 0}');
+
+      if (audioB64 != null && audioB64.isNotEmpty) {
+        final chunk = base64Decode(audioB64);
+        print('emmmmmm decoded chunk.len=${chunk.length}');
+        _chunks.add(chunk);
+      }
+
+      if (status == 2) {
+        print('emmmmmm synthesis finished, total chunks=${_chunks.length}');
+        _channel?.sink.close();
+        _playAll(onDone);
+      }
+    }, onError: (e) {
+      print('emmmmmm WebSocket error: $e');
     });
 
-    _sendRequest(ttsText);
-  }
-
-  Future<void> stop()
-  async {
-    isTTS = false;
-    await methodChannel.invokeMethod('stopAudioTrack');
-  }
-
-  void _sendRequest(String ttsText) {
-    String requestJson = '''
-      {
-        "common": {
-          "app_id": "$appId"
-        },
-        "business": {
-          "aue": "raw",
-          "tte": "$tte",
-          "ent": "intp65",
-          "vcn": "$vcn",
-          "pitch": 50,
-          "speed": 50
-        },
-        "data": {
-          "status": 2,
-          "text": "${base64Encode(utf8.encode(ttsText))}"
-        }
-      }
-    ''';
-    print("TTS请求参数:$requestJson");
-    _channel.sink.add(requestJson);
-  }
-
-  Future<void> _onMessage(dynamic message, Function(String filePath) callback,
-      Function() playEnd, isPlay) async {
-    var jsonResponse = jsonDecode(message);
-    if (filePath.isEmpty) {
-      final directory = await getTemporaryDirectory();
-      filePath = '${directory.path}/${jsonResponse['sid']}.pcm';
-    }
-    if (jsonResponse['code'] != 0) {
-      print('发生错误，错误码为：${jsonResponse['code']}');
-    } else {
-      var audioData = jsonResponse['data']['audio'];
-      if (audioData != null) {
-        var decodedAudio = base64Decode(audioData);
-        completeAudioData.addAll(decodedAudio);
-        if(isTTS)
-          await methodChannel.invokeMethod('playPCMData', decodedAudio);
-      }
-      if (jsonResponse['data']['status'] == 2) {
-        wsCloseFlag = true;
-        _channel.sink.close();
-        if (isPlay) {
-          // await _player!.startPlayer(
-          //   codec: Codec.pcm16,
-          //   numChannels: 1,
-          //   sampleRate: 16000,
-          //   // 讯飞TTS默认16000Hz
-          //   fromDataBuffer: Uint8List.fromList(completeAudioData),
-          //   whenFinished: () {
-          //     playEnd();
-          //     _player?.closePlayer();
-          //   },
-          // );
-        }
-        _saveAudio(Uint8List.fromList(completeAudioData), callback);
-      }
-    }
-  }
-
-  void _saveAudio(
-      Uint8List audioData, Function(String filePath) callback) async {
-    print("开始保存音频数据:$filePath");
-    // final file = File(filePath);
-    // try {
-    //   await file.writeAsBytes(audioData);
-    //   callback(filePath); // 回调音频文件路径
-    // } catch (e) {
-    //   print("保存音频时出错: $e");
-    // }
-  }
-
-  Future<String> _getAuthUrl() async {
-    final uri = Uri.parse(hostUrl);
-    final String date = _formatHttpDate(DateTime.now().toUtc());
-    final String signatureOrigin =
-        'host: ${uri.host}\ndate: $date\nGET ${uri.path} HTTP/1.1';
-    final hmac = Hmac(sha256, utf8.encode(apiSecret));
-    final String signature =
-    base64.encode(hmac.convert(utf8.encode(signatureOrigin)).bytes);
-
-    final authorization = 'api_key="$apiKey", algorithm="hmac-sha256", '
-        'headers="host date request-line", signature="$signature"';
-    final queryParameters = {
-      'authorization': base64.encode(utf8.encode(authorization)),
-      'date': date,
-      'host': uri.host,
+    // 8. 发送请求
+    final req = {
+      'common':  {'app_id': _appId},
+      'business': {
+        'aue':   'lame',
+        'sfl':   1,
+        'vcn':   vcn,
+        'speed': 50,
+        'pitch': 50,
+        'volume':50,
+        'tte':   'UTF8',
+      },
+      'data': {
+        'status': 2,
+        'text':   base64Encode(utf8.encode(text)),
+      },
     };
-
-    final authUri = uri.replace(queryParameters: queryParameters);
-    return authUri.toString();
+    print('emmmmmm send req: ${jsonEncode(req)}');
+    _channel!.sink.add(jsonEncode(req));
   }
 
-// 替代 HttpDate.format(DateTime.now().toUtc())
-  String _formatHttpDate(DateTime date) {
-    // RFC 1123 格式
-    final weekday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][date.weekday - 1];
-    final month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][date.month - 1];
-    return '$weekday, ${date.day.toString().padLeft(2, '0')} $month ${date.year} '
-        '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')} GMT';
+  /// 拼接所有音频分片并在浏览器中播放
+  void _playAll(VoidCallback? onDone) {
+    final totalLen = _chunks.fold<int>(0, (sum, c) => sum + c.length);
+    final bytes    = Uint8List(totalLen);
+    var offset = 0;
+    for (var chunk in _chunks) {
+      bytes.setRange(offset, offset + chunk.length, chunk);
+      offset += chunk.length;
+    }
+
+    final blob   = html.Blob([bytes], 'audio/mpeg');
+    final url    = html.Url.createObjectUrlFromBlob(blob);
+    final player = html.AudioElement(url)
+      ..autoplay = true
+      ..onEnded.listen((_) {
+        html.Url.revokeObjectUrl(url);
+        onDone?.call();
+      });
+    player.play();
+
+    // // 2. 触发浏览器下载，文件名为 tts_output.mp3
+    // final anchor = html.AnchorElement(href: url)
+    //   ..setAttribute('download', 'tts_output.mp3')
+    //   ..style.display = 'none';
+    // html.document.body!.append(anchor);
+    // anchor.click();
+    // anchor.remove();
+
+    print('emmmmmm TTS 音频已触发下载，文件名：tts_output.mp3');
   }
 
-  void dispose() {
-    _player?.closePlayer();
-    _player = null;
+  /// 显式停止，关闭 WebSocket（无法中断已经开始的 Audio 播放）
+  void stop() {
+    _channel?.sink.close();
+  }
+
+  /// 生成 RFC1123 格式的 UTC 时间字符串
+  String _rfc1123Date() {
+    final now = DateTime.now().toUtc();
+    const wkday = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const mont  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    final wd  = wkday[now.weekday - 1];
+    final m   = mont[now.month   - 1];
+    final d   = now.day           .toString().padLeft(2, '0');
+    final h   = now.hour          .toString().padLeft(2, '0');
+    final min = now.minute        .toString().padLeft(2, '0');
+    final s   = now.second        .toString().padLeft(2, '0');
+    return '$wd, $d $m ${now.year} $h:$min:$s GMT';
   }
 }

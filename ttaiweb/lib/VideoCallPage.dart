@@ -37,7 +37,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   final XunFeiRTASR _localRTASR = XunFeiRTASR();
   final XunFeiRTASR _remoteRTASR = XunFeiRTASR();
   final XunFeiTTS tts = XunFeiTTS();
-  // final AudioPlayerUtil audioPlayerUtil = AudioPlayerUtil();
   final ScrollController _scrollController = ScrollController();
   //是否在录音状态
   bool isLeftRecording = false;
@@ -62,7 +61,10 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   ZegoPublisherState _publisherState = ZegoPublisherState.NoPublish;
   ZegoPlayerState _playerState = ZegoPlayerState.NoPlay;
   late ZegoUser _localZegoUser;
-
+  bool isTTS = false;
+  String _remoteStreamID = "";
+  String _localStreamID = "";
+  List<ZegoUser> zegoUserList = [];
 
   @override
   void initState() {
@@ -90,32 +92,11 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
   Future<void> initZego() async {
     print("emmmmmm initSDK");
-    await _requestPermissions();
     await _setupEventHandler();
     await _initializeSDK();
     await _startAudioFrameRecord();
     await loginRoom();
   }
-
-  // Requests microphone and camera permissions
-  Future<void> _requestPermissions() async {
-    // await [Permission.microphone,Permission.camera].request();
-    try {
-      // 请求摄像头和麦克风的权限
-      final mediaStream = await html.window.navigator.mediaDevices?.getUserMedia({
-        'video': true, // 请求视频权限
-        'audio': true, // 请求音频权限
-      });
-
-      // 成功获取权限，进行处理
-      print('Camera and microphone access granted');
-      // 你可以在这里对 mediaStream 进行进一步操作，例如显示视频流等
-    } catch (e) {
-      // 处理错误，例如用户拒绝权限
-      print('Error requesting permission: $e');
-    }
-  }
-
 
   Future<void> _initializeSDK() async {
     print('🚀 _initializeSDK enablePlatformView:${ZegoConfig.instance.enablePlatformView}');
@@ -132,7 +113,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     // Notify View that engine state changed
     setState(() => _isEngineActive = true);
 
-    print('🚀 Create ZegoExpressEngine');
+    print('emmmmmm 🚀 Create ZegoExpressEngine');
 
   }
 
@@ -143,23 +124,21 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     // Room status update callback
     ZegoExpressEngine.onRoomStateUpdate = (String roomID, ZegoRoomState state, int errorCode, Map<String, dynamic> extendedData) {
       // Implement event callbacks as needed
-      print('🚩 🚪 Room state update, state: $state, errorCode: $errorCode, roomID: $roomID');
+      print('emmmmmm 🚩 🚪 Room state update, state: $state, errorCode: $errorCode, roomID: $roomID');
       setState(() => _roomState = state);
     };
 
     //User status update
     ZegoExpressEngine.onRoomUserUpdate = (String roomID, ZegoUpdateType updateType, List<ZegoUser> userList) {
+      zegoUserList = userList;
       userList.forEach((user) {
         var userID = user.userID;
         var userName = user.userName;
-        print('🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType userID: $userID userName: $userName');
+        print('emmmmmm 🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType userID: $userID userName: $userName');
       });
-      print('🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType count: ${userList.length}');
+      print('emmmmmm 🚩 🚪 Room user update, roomID: $roomID, updateType: $updateType count: ${userList.length}');
       if(updateType == ZegoUpdateType.Add){
-        setState(() {
-          _localRTASR.startChannel();
-          _remoteRTASR.startChannel();
-        });
+
       }else if(updateType == ZegoUpdateType.Delete){
         setState(() {
           _localRTASR.stopChannel();
@@ -174,7 +153,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       streamList.forEach((stream) {
         var streamID = stream.streamID;
         startPlayingStream(streamID);
-        print('🚩 🚪 Room stream update, roomID: $roomID, updateType: $updateType streamID:$streamID');
+        print('emmmmmm 🚩 🚪 Room stream update, roomID: $roomID, updateType: $updateType streamID:$streamID');
       });
     };
 
@@ -182,7 +161,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
         ZegoPlayerState state,
         int errorCode,
         Map<String, dynamic> extendedData) {
-      print('🚩 📥 Player state update, state: $state, errorCode: $errorCode, streamID: $streamID');
+      print('emmmmmm 🚩 📥 Player state update, state: $state, errorCode: $errorCode, streamID: $streamID');
       setState(() => _playerState = state);
     };
 
@@ -206,9 +185,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     int observerBitMask = ZegoAudioDataCallbackBitMask.Mixed|ZegoAudioDataCallbackBitMask.Player;
     ZegoExpressEngine.instance.startAudioDataObserver(observerBitMask, param);
     ZegoExpressEngine.onMixedAudioData = ((data, length, param) {
-      // final noZegoLength = this.countValuesGreaterThanZero(data);
-      // print(
-      //     '🚩 fffflutter onMixedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
       // 处理本地PCM音频数据...
       if(mounted){
         processLocalAudio(
@@ -218,9 +194,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       }
     });
     ZegoExpressEngine.onPlayerAudioData = ((data, length, param, streamID) {
-      // final noZegoLength = this.countValuesGreaterThanZero(data);
-      // print(
-      //     '🚩 fffflutter onPlayerAudioData, length:$noZegoLength/$length streamID:$streamID ${param.channel} ${param.sampleRate}');
       // 处理特定流的远端音频数据...
       if(mounted){
         processRemoteAudio(
@@ -228,16 +201,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
           rightLanguage['code'], // 使用左侧选择的语言识别
         );
       }
-    });
-    ZegoExpressEngine.onPlaybackAudioData = ((data, length, param) {
-      // final noZegoLength = this.countValuesGreaterThanZero(data);
-      // print(
-      //     '🚩 fffflutter onPlaybackAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
-    });
-    ZegoExpressEngine.onCapturedAudioData = ((data, length, param) {
-      // final noZegoLength = this.countValuesGreaterThanZero(data);
-      // print(
-      //     '🚩 fffflutter onCapturedAudioData, length:$noZegoLength/$length ${param.channel} ${param.sampleRate}');
     });
   }
 
@@ -254,7 +217,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   // Join a channel
   Future<void> loginRoom() async {
     if (!_isEngineActive) {
-      print('⚠️ 引擎未初始化，无法登录房间');
+      print('emmmmmm ⚠️ 引擎未初始化，无法登录房间');
       return;
     }
     // Instantiate a ZegoUser object
@@ -269,13 +232,13 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
       } else {
         await ZegoExpressEngine.instance.loginRoom(ZegoConfig.instance.room, _localZegoUser, config: config);
       }
-      print('✅ 成功登录房间: ${ZegoConfig.instance.room}');
+      print('emmmmmm ✅ 成功登录房间: ${ZegoConfig.instance.room}');
       // 登录后立即启动预览
       await startPreview();
       await ZegoExpressEngine.instance.muteMicrophone(false);
       await startPublishingStream(_localZegoUser.userID);
     } catch (e) {
-      print('❌ 登录房间失败: $e');
+      print('emmmmmm ❌ 登录房间失败: $e');
     }
   }
 
@@ -285,7 +248,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     // But directly logout room without destroying the [PlatformView]
     // or [TextureRenderer] may cause a memory leak.
     await ZegoExpressEngine.instance.logoutRoom(ZegoConfig.instance.room);
-    print('🚪 logout room, roomID: $ZegoConfig.instance.room');
+    print('emmmmmm 🚪 logout room, roomID: $ZegoConfig.instance.room');
 
     clearPreviewView();
     clearPlayView();
@@ -296,8 +259,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     Future<void> _startPreview(int viewID) async {
       ZegoCanvas canvas = ZegoCanvas.view(viewID);
       await ZegoExpressEngine.instance.startPreview(canvas: canvas);
-      print('🔌 Start preview, viewID: $viewID');
-      await _localRTASR.startChannel();
+      print('emmmmmm 🔌 Start preview, viewID: $viewID');
     }
 
     if (kIsWeb) {
@@ -318,11 +280,9 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     if (!kIsWeb) {
       return;
     }
-
     if (_previewViewWidget == null) {
       return;
     }
-
     // Developers should destroy the [CanvasView] after
     // [stopPublishingStream] or [stopPreview] to release resource and avoid memory leaks
     await ZegoExpressEngine.instance.destroyCanvasView(_previewViewID);
@@ -333,11 +293,9 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     if (!kIsWeb) {
       return;
     }
-
     if (_playViewWidget == null) {
       return;
     }
-
     // Developers should destroy the [CanvasView]
     // after [stopPlayingStream] to release resource and avoid memory leaks
     await ZegoExpressEngine.instance.destroyCanvasView(_playViewID);
@@ -358,36 +316,27 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   }
 
   Future<void> startPublishingStream(String streamID) async{
-    // _mediaPlayer ??= await ZegoExpressEngine.instance.createMediaPlayer();
-    // await _mediaPlayer?.enableAudioData(true);
-    // await _mediaPlayer?.start();
+    _localStreamID = streamID;
     await ZegoExpressEngine.instance.startPublishingStream(streamID);
-    print('📤 Start publishing stream, streamID: $streamID');
+    print('emmmmmm 📤 Start publishing stream, streamID: $streamID');
   }
 
   Future<void> stopPublishingStream() async{
-    // _mediaPlayer?.stop();
-    // if (_mediaPlayer != null) {
-    //   Timer(Duration(seconds: 1), () {
-    //     ZegoExpressEngine.instance.destroyMediaPlayer(_mediaPlayer!);
-    //     _mediaPlayer = null;
-    //   });
-    // }
+    _localStreamID = "";
     await ZegoExpressEngine.instance.stopPublishingStream();
   }
 
   // MARK: - Step 4: StartPlayingStream
-
   Future<void> startPlayingStream(String streamID) async{
+    _remoteStreamID = streamID;
     void _startPlayingStream(int viewID, String streamID) async{
       ZegoCanvas canvas = ZegoCanvas.view(viewID);
       ZegoExpressEngine.instance.startPlayingStream(streamID, canvas: canvas);
-      print('📥 Start playing stream, streamID: $streamID, viewID: $viewID');
-      await _remoteRTASR.startChannel();
+      print('emmmmmm 📥 Start playing stream, streamID: $streamID, viewID: $viewID');
     }
 
     if (kIsWeb) {
-      print('📥 Start playing stream, streamID');
+      print('emmmmmm 📥 Start playing stream, streamID');
       ZegoExpressEngine.instance.createCanvasView((viewID) {
         _playViewID = viewID;
         _startPlayingStream(viewID, streamID);
@@ -402,6 +351,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   }
 
   Future<void> stopPlayingStream(String streamID) async{
+    _remoteStreamID = "";
     await ZegoExpressEngine.instance.stopPlayingStream(streamID);
     await clearPlayView();
   }
@@ -424,6 +374,8 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
     // Notify View that engine state changed
     setState(() {
+      _localStreamID = "";
+      _remoteStreamID = "";
       _isEngineActive = false;
       _roomState = ZegoRoomState.Disconnected;
       _publisherState = ZegoPublisherState.NoPublish;
@@ -435,6 +387,8 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   Future<void> processLocalAudio(Uint8List pcmData, String lang) async {
     // print("emmmmmm processLocalAudio$lang");
     if (_localRTASR.isFirst) {
+      _localRTASR.startChannel("local");
+      // _remoteRTASR.startChannel("remote");
       ConversationMessage message = ConversationMessage(
         id: MessageIdGenerator.generate(),
         originalText: "",
@@ -477,8 +431,9 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
   // 处理远端用户音频
   void processRemoteAudio(Uint8List pcmData, String lang) {
-    // print("emmmmmm processRemoteAudio$lang");
     if (_remoteRTASR.isFirst) {
+      print("emmmmmm 开启远端音频$lang");
+      _remoteRTASR.startChannel("remote");
       ConversationMessage message = ConversationMessage(
         id: MessageIdGenerator.generate(),
         originalText: "",
@@ -519,24 +474,6 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     _remoteRTASR.writeAudioData(lang, 0, pcmData);
   }
 
-  // Uint8List convertFloat32ToInt16(Uint8List float32Bytes) {
-  //   final float32List = float32Bytes.buffer.asFloat32List();
-  //   final int16List = Int16List(float32List.length);
-  //
-  //   for (int i = 0; i < float32List.length; i++) {
-  //     double sample = float32List[i];
-  //
-  //     // Clamp between -1.0 and 1.0 (safe range)
-  //     if (sample < -1.0) sample = -1.0;
-  //     if (sample > 1.0) sample = 1.0;
-  //
-  //     // Scale to 16-bit PCM range
-  //     int16List[i] = (sample * 32767).toInt();
-  //   }
-  //
-  //   return Uint8List.view(int16List.buffer);
-  // }
-
 
   bool isAllZero(Uint8List? buffer) {
     if (buffer == null) return false;
@@ -567,7 +504,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
   //控制视频流的开启与关闭
   Future<void> toggleCameraStream() async {
-    print("控制视频流的开启与关闭 $isVideoMuted");
+    print("emmmmmm 控制视频流的开启与关闭 $isVideoMuted");
 
     setState(() {
       isVideoMuted = !isVideoMuted;
@@ -612,13 +549,13 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
 
 // Displays local video view
   Widget _localVideo() {
-    print("_previewViewWidget:$_previewViewWidget");
+    print("emmmmmm _previewViewWidget:$_previewViewWidget");
     return _previewViewWidget ?? Container(color: Colors.white); // If null, return a black container
   }
 
 // Display remote user's video
   Widget _remoteVideo() {
-    print("_playViewWidget:$_playViewWidget");
+    print("emmmmmm _playViewWidget:$_playViewWidget");
     return _playViewWidget ?? Container(color: Colors.black); // If null, return a black container
   }
 
@@ -638,8 +575,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     stopListenEvent();
     _localRTASR.stopChannel();
     _remoteRTASR.stopChannel();
-    ZegoExpressEngine.destroyEngine()
-        .then((value) => print('async destroy success'));
+    ZegoExpressEngine.destroyEngine().then((value) => print('async destroy success'));
   }
 
   void stopListenEvent() {
@@ -722,93 +658,79 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     );
   }
 
-
   Widget _buildTopBar(BuildContext context) {
-    final selectionState =
-    ref.watch(languageSelectionProvider("VedioCall"));
-    final selectionNotifier =
-    ref.read(languageSelectionProvider("VedioCall").notifier);
-    return Consumer(
-      builder: (context, watch, _) {
-        final languageState = ref.watch(languageProvider);
-        final localization = AppLocalizations.of(context)!;
-        print("languageState$languageState");
-        if (languageState is AsyncLoading) {
-          return Center(child: CircularProgressIndicator());
-        } else if (languageState is AsyncError) {
-          return Center(child: Text(localization.translate('加载语言失败')));
-        } else if (languageState is AsyncData) {
-          final leftLanguage = selectionNotifier.getLeftSelectedLanguage();
-          final rightLanguage = selectionNotifier.getRightSelectedLanguage();
-
-          print("leftLanguage: $leftLanguage");
-
-          return Padding(
-            padding: const EdgeInsets.only(top: 12.0, bottom: 8),
-            // 移除左右的 padding
-            child: Row(
-              children: [
-                // 返回按钮固定在左侧
-                IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () {
-                    ref.read(conversationProviderTranslate.notifier).clearMessages();
-                    Navigator.pop(context);
-                  },
-                ),
-                // 其他内容居中
-                Expanded(
-                  child: Center(
-                    // 将其他内容居中
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center, // 居中对齐
-                      children: [
-                        _buildLanguageButtonWithIcon(
-                          text: leftLanguage.isEmpty
-                              ? "中文"
-                              : leftLanguage['displayName'] ?? "中文",
-                          onPressed: () => _onLanguageButtonPressed(
-                              context, selectionState.leftLanguageIndex,
-                                  (index) {
-                                ref
-                                    .read(languageSelectionProvider("VedioCall")
-                                    .notifier)
-                                    .selectLeftLanguage(index);
-                              }),
-                          isEnabled: false,
-                        ),
-                        const SizedBox(width: 10),
-                        _buildLanguageSwapButton(
-                          isEnabled: false,
-                        ),
-                        const SizedBox(width: 10),
-                        _buildLanguageButtonWithIcon(
-                          text: rightLanguage.isEmpty
-                              ? "英文"
-                              : rightLanguage['displayName'] ?? "English",
-                          onPressed: () => _onLanguageButtonPressed(
-                              context, selectionState.rightLanguageIndex,
-                                  (index) {
-                                final not = ref
-                                    .read(languageSelectionProvider(
-                                    "VedioCall")
-                                    .notifier);
-                                not.selectRightLanguage(index);
-                              }),
-                          isEnabled: false,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+    final localization = AppLocalizations.of(context)!;
+    final selectionState = ref.watch(languageSelectionProvider("VedioCall"));
+    final selectionNotifier = ref.read(languageSelectionProvider("VedioCall").notifier);
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, bottom: 8),
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              ref.read(conversationProviderTranslate.notifier).clearMessages();
+              Navigator.pop(context);
+            },
+          ),
+          Expanded(
+            child: Consumer(
+              builder: (context, ref, _) {
+                final languageState = ref.watch(languageProvider);
+                if (languageState is AsyncLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (languageState is AsyncError) {
+                  return Center(child: Text(localization.translate('加载语言失败')));
+                } else if (languageState is AsyncData) {
+                  final leftLanguage = selectionNotifier.getLeftSelectedLanguage();
+                  final rightLanguage = selectionNotifier.getRightSelectedLanguage();
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildLanguageButtonWithIcon(
+                        text: leftLanguage.isEmpty ? "中文" : leftLanguage['displayName'] ?? "中文",
+                        onPressed: () => _onLanguageButtonPressed(context, selectionState.leftLanguageIndex, (i) => selectionNotifier.selectLeftLanguage(i)),
+                        isEnabled: false,
+                      ),
+                      const SizedBox(width: 10),
+                      _buildLanguageSwapButton(isEnabled: false),
+                      const SizedBox(width: 10),
+                      _buildLanguageButtonWithIcon(
+                        text: rightLanguage.isEmpty ? "英文" : rightLanguage['displayName'] ?? "English",
+                        onPressed: () => _onLanguageButtonPressed(context, selectionState.rightLanguageIndex, (i) => selectionNotifier.selectRightLanguage(i)),
+                        isEnabled: false,
+                      ),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
-          );
-        }
-
-        return SizedBox.shrink();
-      },
+          ),
+          // 新增 TTS 播报开关
+          Row(
+            children: [
+              Text(localization.translate('播报'), style: TextStyle(color: Colors.white)),
+              Switch(
+                value: isTTS,
+                activeColor: Colors.white,
+                inactiveThumbColor: Colors.grey,
+                onChanged: (value) => setState(() {
+                    isTTS = value;
+                    if(isTTS) {
+                      print("emmmmmm 开启播报");
+                      ZegoExpressEngine.instance.setPlayVolume(_remoteStreamID, 0);
+                    }else{
+                      print("emmmmmm 关闭播报");
+                      ZegoExpressEngine.instance.setPlayVolume(_remoteStreamID, 100);
+                    }
+                  }
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -817,6 +739,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
     required VoidCallback onPressed,
     bool isEnabled = true, // 录音时禁用
   }) {
+    final localization = AppLocalizations.of(context)!;
     return Opacity(
       opacity: isEnabled ? 1.0 : 0.5, // 禁用时降低透明度
       child: TextButton(
@@ -833,7 +756,7 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
               Container(
                 constraints: BoxConstraints(maxWidth: 80),
                 child: Text(
-                  text,
+                  localization.translate(text),
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -1035,54 +958,11 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
   }
 
   void _onPlay(ConversationMessage message, WidgetRef ref) {
-    // // 停止录音并显示已识别的内容
-    // if (isLeftRecording || isRightRecording) {
-    //   _stopASR();
-    //   _onStop(message, ref);
-    // }
-    //
-    // // 当最新消息正在自动播放时，如果点击上面的对话内容的按钮，停止播放和动画
-    // if (curFarMessage != null) {
-    //   curFarMessage!.isAutoPlaying = false;
-    //   curFarMessage!.isPlaying = false;
-    //   ref
-    //       .read(conversationProviderTranslate.notifier)
-    //       .updateMessage(curFarMessage!);
-    // }
-    //
-    // final notifier = ref.read(conversationProviderTranslate.notifier);
-    //
-    // // 如果有其他音频在播放，先停止
-    // if (notifier.playingFilePath != null) {
-    //   audioPlayerUtil.stop();
-    // }
-    // curFarMessage?.isPlaying = false;
-    // curFarMessage?.isAutoPlaying = false;
-    // notifier.updateMessage(curFarMessage!);
-    // curFarMessage = message;
-    // // 设置新的播放状态
-    // notifier.setPlayingFilePath(message.ttsFilePath);
-    // message.isPlaying = true;
-    // message.isAutoPlaying = true; // Start animation
-    // notifier.updateMessage(message);
-    //
-    // audioPlayerUtil.playPCMFromFile(message.ttsFilePath, () {
-    //   // 播放完毕后清除状态
-    //   message.isPlaying = false;
-    //   message.isAutoPlaying = false;
-    //   notifier.setPlayingFilePath(null);
-    //   notifier.updateMessage(message);
-    // });
+
   }
 
   void _onStop(ConversationMessage message, WidgetRef ref) {
-    // final notifier = ref.read(conversationProviderTranslate.notifier);
-    //
-    // audioPlayerUtil.stop();
-    // message.isPlaying = false;
-    // message.isAutoPlaying = false;
-    // notifier.setPlayingFilePath(null);
-    // notifier.updateMessage(message);
+
   }
 
 
@@ -1117,75 +997,22 @@ class _VideoCallPageState extends ConsumerState<VideoCallPage>
               .read(conversationProviderTranslate.notifier)
               .updateMessage(message);
           // tts
-          // tts.startTTS(
-          //     result,
-          //     isLeft
-          //         ? ref
-          //         .read(languageSelectionProvider("VedioCall")
-          //         .notifier)
-          //         .getRightSelectedLanguage()['voice']
-          //         : ref
-          //         .read(languageSelectionProvider("VedioCall")
-          //         .notifier)
-          //         .getLeftSelectedLanguage()['voice'], (filepath) {
-          //   message.ttsFilePath = filepath;
-          //   ref
-          //       .read(conversationProviderTranslate.notifier)
-          //       .updateMessage(message);
-          //
-          //   // 检查是否有正在播放的消息
-          //   final notifier = ref.read(conversationProviderTranslate.notifier);
-          //   if (notifier.playingFilePath != null) {
-          //     // 如果有正在播放的消息，等待它播放完成后再播放新消息
-          //     message.isPlaying = false;
-          //     message.isAutoPlaying = false;
-          //     ref
-          //         .read(conversationProviderTranslate.notifier)
-          //         .updateMessage(message);
-          //
-          //     // 监听当前播放的消息状态
-          //     final currentPlayingMessage = ref
-          //         .read(conversationProviderTranslate)
-          //         .firstWhere(
-          //             (msg) => msg.ttsFilePath == notifier.playingFilePath);
-          //
-          //     // 创建一个定时器来检查播放状态
-          //     Timer.periodic(Duration(milliseconds: 100), (timer) {
-          //       if (!currentPlayingMessage.isPlaying) {
-          //         timer.cancel();
-          //         // 当前消息播放完成，开始播放新消息
-          //         message.isPlaying = true;
-          //         message.isAutoPlaying = true;
-          //         ref
-          //             .read(conversationProviderTranslate.notifier)
-          //             .updateMessage(message);
-          //         curMessage = message;
-          //         audioPlayerUtil.playPCMFromFile(filepath, () {
-          //           message.isPlaying = false;
-          //           message.isAutoPlaying = false;
-          //           ref
-          //               .read(conversationProviderTranslate.notifier)
-          //               .updateMessage(message);
-          //         });
-          //       }
-          //     });
-          //   } else {
-          //     // 如果没有正在播放的消息，直接播放新消息
-          //     message.isPlaying = true;
-          //     message.isAutoPlaying = true;
-          //     ref
-          //         .read(conversationProviderTranslate.notifier)
-          //         .updateMessage(message);
-          //     curMessage = message;
-          //     audioPlayerUtil.playPCMFromFile(filepath, () {
-          //       message.isPlaying = false;
-          //       message.isAutoPlaying = false;
-          //       ref
-          //           .read(conversationProviderTranslate.notifier)
-          //           .updateMessage(message);
-          //     });
-          //   }
-          // }, () {}, false);
+          if(isLeft && isTTS){
+            tts.startTTS(
+              text: result,
+              vcn: isLeft
+                  ? ref.read(languageSelectionProvider("VedioCall").notifier)
+                  .getLeftSelectedLanguage()['voice']
+                  : ref.read(languageSelectionProvider("VedioCall").notifier)
+                  .getRightSelectedLanguage()['voice'],
+              onDone: () {
+                // // Web 版没有本地文件路径，直接在这里更新 state
+                // ref.read(conversationProviderTranslate.notifier)
+                //     .updateMessage(message);
+              },
+            );
+          }
+
         },
             (error) {
           print("翻译失败: $error");

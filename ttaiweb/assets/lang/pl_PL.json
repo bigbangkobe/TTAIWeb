@@ -212,7 +212,7 @@
 
   "文件已删除": "Plik został usunięty",
 
-  "您确定要删除此录音文件吗？": "Czy na pewno chcesz usunąć ten plik nagrania?",
+  "您确定要删除此文件吗？": "Czy na pewno chcesz usunąć ten plik nagrania?",
 
   "删除": "Usuń",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Błąd ładowania polityki prywatności",
   "暂无隐私政策内容": "Brak treści polityki prywatności",
   "权限请求结果": "Wynik zapytania o uprawnienia",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Witaj w aplikacji Doujiao, aby zapewnić Ci lepszą obsługę, proszę najpierw wyrazić zgodę",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Witaj w aplikacji ObtuneAI, aby zapewnić Ci lepszą obsługę, proszę najpierw wyrazić zgodę",
   "AI智能体": "AI Agent Inteligentny",
   "翻译机": "Maszyna do tłumaczeń",
   "双耳模式": "Tryb podwójnego ucha",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Kliknij przycisk, aby rozpocząć mówienie",
   "请说中文...": "Proszę mówić po chińsku...",
   "将翻译为英文...": "Tłumaczenie na angielski...",
-  "戴左耳机的人说": "Osoba z lewą słuchawką mówi",
-  "戴右耳机的人说": "Osoba z prawą słuchawką mówi",
+  "左耳机": "Osoba z lewą słuchawką mówi",
+  "右耳机": "Osoba z prawą słuchawką mówi",
   "位置权限说明": "Informacje o uprawnieniach do lokalizacji",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Aby pomóc Ci znaleźć zagubione słuchawki Bluetooth, potrzebujemy dostępu do Twojej lokalizacji",
   "麦克风权限说明": "Informacje o uprawnieniach do mikrofonu",
@@ -335,5 +335,29 @@
   "无法打开应用": "Nie udało się otworzyć aplikacji",
   "商城": "Sklep",
   "是否要跳转到官方应用？": "Czy chcesz przejść do oficjalnej aplikacji?",
-  "是否要跳转到商城应用？": "Czy chcesz przejść do aplikacji sklepu?"
+  "是否要跳转到商城应用？": "Czy chcesz przejść do aplikacji sklepu?",
+  "新品": "Nowe produkty",
+  "节点选择": "Wybór węzła",
+  "中国": "Chiny",
+  "中国香港": "Hongkong",
+  "美国": "Stany Zjednoczone",
+  "新加坡": "Singapur",
+  "澳大利亚": "Australia",
+  "马来西亚": "Malezja",
+  "旅行": "Podróż",
+  "会议": "Spotkanie",
+  "个人场景": "Osobisty scenariusz",
+  "专业功能": "Funkcje zawodowe",
+  "温馨提醒": "Przyjazne przypomnienie",
+  "不再提示": "Nie przypominaj mi więcej",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Obie strony, jedna nosi słuchawki, a druga korzysta z telefonu. Osoba nosząca słuchawki mówi i tłumaczy, a następnie odtwarza przez telefon dla drugiej osoby. Druga osoba mówi do telefonu i tłumaczy, a następnie odtwarza przez słuchawki dla osoby noszącej słuchawki.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Obie strony noszą po jednej słuchawce, a gdy ja mówię, tłumaczenie jest odtwarzane w słuchawkach drugiej osoby w czasie rzeczywistym. Gdy druga osoba mówi, tłumaczenie jest odtwarzane w moich słuchawkach w czasie rzeczywistym.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Obie strony komunikują się twarzą w twarz, ja mówię przez telefon i tłumaczę, odtwarzając to dla drugiej osoby, a następnie druga osoba mówi przez telefon i tłumaczy, odtwarzając to dla mnie, co pozwala na wzajemną komunikację tłumaczeniową.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Gdy musisz słuchać wypowiedzi w obcym języku, np. obcojęzycznych filmów, kliknij przycisk start, a język mówcy zostanie przetłumaczony na nasze słuchawki w czasie rzeczywistym, a tłumaczenie będzie rejestrowane w oprogramowaniu.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Podczas uczestnictwa w spotkaniu, kliknij przycisk nagrywania, aby rozpocząć rejestrowanie treści spotkania, wypowiedzi będą w czasie rzeczywistym przekształcane na tekst, a po zakończeniu zapisane, z możliwością eksportu plików nagrań, jednocześnie generując podsumowanie spotkania za pomocą AI.",
+
+  "温馨提示": "Przyjazne przypomnienie",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Przejdź do ustawień systemowych, aby połączyć urządzenie Bluetooth. Jeśli nieautoryzowane urządzenie jest już połączone, najpierw je odłącz, a następnie spróbuj ponownie."
+
 }

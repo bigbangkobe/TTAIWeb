@@ -46,6 +46,7 @@ dependencies:
   easy_localization: ^3.0.0
   zego_express_engine: 3.21.0-private.370
   universal_html: ^2.2.4
+  http_parser: ^4.0.0
 #  flutter_z_location: ^0.0.9
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

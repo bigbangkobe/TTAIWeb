@@ -212,7 +212,7 @@
 
   "文件已删除": "Faili imefutwa",
 
-  "您确定要删除此录音文件吗？": "Una uhakika unataka kufuta faili hii ya rekodi?",
+  "您确定要删除此文件吗？": "Una uhakika unataka kufuta faili hii ya rekodi?",
 
   "删除": "Futa",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Imeshindwa kupakia sera ya faragha",
   "暂无隐私政策内容": "Hakuna maudhui ya sera ya faragha",
   "权限请求结果": "Matokeo ya ombi la ruhusa",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Karibu kutumia programu ya Doujiao, ili kukuletea huduma bora, tafadhali kubali kwanza.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Karibu kutumia programu ya ObtuneAI, ili kukuletea huduma bora, tafadhali kubali kwanza.",
   "AI智能体": "Wakala wa AI",
   "翻译机": "Mashine ya tafsiri",
   "双耳模式": "Hali ya masikio mawili",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Bofya kitufe kuanza kuzungumza",
   "请说中文...": "Tafadhali zungumza Kichina...",
   "将翻译为英文...": "Inatafsiriwa kwa Kiingereza...",
-  "戴左耳机的人说": "Mtu aliyevaa earphone ya kushoto anazungumza",
-  "戴右耳机的人说": "Mtu aliyevaa earphone ya kulia anazungumza",
+  "左耳机": "Mtu aliyevaa earphone ya kushoto anazungumza",
+  "右耳机": "Mtu aliyevaa earphone ya kulia anazungumza",
   "位置权限说明": "Maelezo kuhusu ruhusa ya eneo",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Ili kukusaidia kupata earphone zako za Bluetooth zilizo potea, tunahitaji ruhusa ya kufikia eneo lako",
   "麦克风权限说明": "Maelezo kuhusu ruhusa ya kipaza sauti",
@@ -335,5 +335,29 @@
   "无法打开应用": "Imeshindikana kufungua programu",
   "商城": "Duka",
   "是否要跳转到官方应用？": "Je, unataka kwenda kwenye programu rasmi?",
-  "是否要跳转到商城应用？": "Je, unataka kwenda kwenye programu ya duka?"
+  "是否要跳转到商城应用？": "Je, unataka kwenda kwenye programu ya duka?",
+  "新品": "Bidhaa mpya",
+  "节点选择": "Chaguo la solenoid",
+  "中国": "China",
+  "中国香港": "Hong Kong, China",
+  "美国": "Marekani",
+  "新加坡": "Singapuri",
+  "澳大利亚": "Australia",
+  "马来西亚": "Malaysia",
+  "旅行": "Safari",
+  "会议": "Mkutano",
+  "个人场景": "Hali binafsi",
+  "专业功能": "Vipengele vya kitaalamu",
+  "温馨提醒": "Kumbusho la kirafiki",
+  "不再提示": "Usionyeshe tena",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Pande zote mbili, mmoja anavaa masikio ya sikio na mwingine anatumia simu. Mtu aliye na masikio ya sikio anazungumza na kutafsiri, kisha anacheza kupitia simu ili upande mwingine asikie. Upande mwingine anazungumza kwa simu na kutafsiri, kisha inachezwa kupitia masikio ya sikio kwa mtu aliye na masikio ya sikio asikie.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Pande zote mbili wanavaa masikio ya sikio, ninapozungumza, tafsiri itachezwa moja kwa moja kwenye masikio ya sikio ya upande mwingine. Mtu mwingine anapozungumza, tafsiri itachezwa moja kwa moja kwenye masikio yangu ya sikio.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Pande zote mbili zinawasiliana uso kwa uso, mimi huzungumza kupitia simu na kutafsiri ili upande mwingine aisikie. Kisha upande mwingine anazungumza kupitia simu na kutafsiri ili mimi niisikia, hivyo kufanikisha mawasiliano ya tafsiri ya pande mbili.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Wakati unahitaji kusikiliza hotuba ya lugha ya kigeni kwa wakati halisi, filamu za kigeni n.k., bonyeza kitufe cha kuanza, lugha ya mzungumzaji itatafsiriwa na kucheza kwa masikio yetu ya sikio kwa wakati halisi, wakati huo tafsiri itahifadhiwa katika programu.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Wakati unashiriki katika mkutano, bonyeza kitufe cha kurekodi ili kuanza kurekodi yaliyomo ya mkutano, yaliyomo ya mazungumzo yatageuzwa kuwa maandishi kwa wakati halisi, baada ya kumaliza yatahifadhiwa na yanaweza kusafirishwa kama faili ya kurekodi, wakati huo pia itaunda muhtasari wa mkutano kwa kutumia AI.",
+
+  "温馨提示": "Kumbusho la kirafiki",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Tafadhali nenda kwenye mipangilio ya mfumo ili kuunganisha kifaa cha Bluetooth. Ikiwa kifaa kisichoruhusiwa tayari kimeunganishwa, tafadhali kikate kwanza kisha jaribu tena."
+
 }

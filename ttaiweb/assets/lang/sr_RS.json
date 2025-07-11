@@ -212,7 +212,7 @@
 
   "文件已删除": "Датотека је избрисана",
 
-  "您确定要删除此录音文件吗？": "Да ли сте сигурни да желите да избришете ову аудио датотеку?",
+  "您确定要删除此文件吗？": "Да ли сте сигурни да желите да избришете ову аудио датотеку?",
 
   "删除": "Избриши",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Ne može da se učita politika privatnosti",
   "暂无隐私政策内容": "Nema sadržaja politike privatnosti",
   "权限请求结果": "Rezultat zahteva za dozvolu",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Dobrodošli u DouJiao aplikaciju. Za bolju uslugu, molimo vas da se složite sa izborom",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Dobrodošli u ObtuneAI aplikaciju. Za bolju uslugu, molimo vas da se složite sa izborom",
   "AI智能体": "AI pametan agent",
   "翻译机": "Prevodilački uređaj",
   "双耳模式": "Dvoslušni režim",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Kliknite na dugme da počnete da govorite",
   "请说中文...": "Molimo, govorite kineski...",
   "将翻译为英文...": "Prevodi se na engleski...",
-  "戴左耳机的人说": "Osoba sa slušalicom u levom uhu govori",
-  "戴右耳机的人说": "Osoba sa slušalicom u desnom uhu govori",
+  "左耳机": "Osoba sa slušalicom u levom uhu govori",
+  "右耳机": "Osoba sa slušalicom u desnom uhu govori",
   "位置权限说明": "Objašnjenje dozvole za lokaciju",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Da bismo vam pomogli da pronađete izgubljene Bluetooth slušalice, potrebna nam je dozvola za pristup vašoj lokaciji",
   "麦克风权限说明": "Objašnjenje dozvole za mikrofon",
@@ -335,5 +335,30 @@
   "无法打开应用": "Nije moguće otvoriti aplikaciju",
   "商城": "Prodavnica",
   "是否要跳转到官方应用？": "Da li želite da pređete na zvaničnu aplikaciju?",
-  "是否要跳转到商城应用？": "Da li želite da pređete na aplikaciju prodavnice?"
+  "是否要跳转到商城应用？": "Da li želite da pređete na aplikaciju prodavnice?",
+  "新品": "Novi proizvodi",
+  "节点选择": "Izbor čvora",
+  "中国": "Kina",
+  "中国香港": "Hongkong, Kina",
+  "美国": "Sjedinjene Američke Države",
+  "新加坡": "Singapur",
+  "澳大利亚": "Australija",
+  "马来西亚": "Malezija",
+  "旅行": "Putovanje",
+  "会议": "Sastanak",
+  "个人场景": "Lični scenarij",
+  "专业功能": "Profesionalne funkcije",
+  "温馨提醒": "Prijateljsko podsećanje",
+  "不再提示": "Ne obaveštavaj više",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Obe strane, jedna nosi slušalice, a druga koristi telefon. Osoba sa slušalicama govori i prevodi, zatim pušta preko telefona da druga strana čuje. Druga strana govori u telefon i prevodi, zatim to pušta preko slušalica osobi sa slušalicama.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Obe strane nose po jednu slušalicu, kada govorim, prevod se u stvarnom vremenu pušta u slušalice druge strane. Kada druga strana govori, prevod se u stvarnom vremenu pušta u moje slušalice.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Obe strane komuniciraju licem u lice, ja govorim putem telefona i prevodim, kako bi druga strana čula. Zatim druga strana također govori putem telefona i prevodi, kako bi ja to čuo, ostvarujući međusobnu prevodilačku komunikaciju.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Kada je potrebno u stvarnom vremenu slušati govore na stranom jeziku, strane filmove itd., pritisnite dugme za početak, jezik govornika će biti simultano preveden u naše slušalice, a prevod će biti sačuvan u softveru.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Prilikom učešća na sastanku pritisnite dugme za snimanje kako biste započeli sa snimanjem sadržaja sastanka, govorni sadržaj će biti automatski pretvoren u tekst, nakon završetka biće sačuvan i može se izvesti snimak, dok će AI generisati izveštaj sa sastanka.",
+
+  "温馨提示": "Пријатељски подсетник",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Молимо идите у системска подешавања да повежете Bluetooth уређај. Ако је неовлашћени уређај већ повезан, прво га искључите па покушајте поново."
+
+
 }

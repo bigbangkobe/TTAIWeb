@@ -212,7 +212,7 @@
 
   "文件已删除": "Failas ištrintas",
 
-  "您确定要删除此录音文件吗？": "Ar tikrai norite ištrinti šį garso failą?",
+  "您确定要删除此文件吗？": "Ar tikrai norite ištrinti šį garso failą?",
 
   "删除": "Ištrinti",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Nepavyko įkelti privatumo politikos.",
   "暂无隐私政策内容": "Privatumo politikos turinys kol kas nėra prieinamas.",
   "权限请求结果": "Prašymo dėl leidimų rezultatas",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Sveiki atvykę į 'Doujiao' programą. Norėdami gauti geresnį aptarnavimą, prašome sutikti su sąlygomis.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "ObtuneAI Sveiki atvykę į 'Doujiao' programą. Norėdami gauti geresnį aptarnavimą, prašome sutikti su sąlygomis.",
   "AI智能体": "AI intelektas",
   "翻译机": "Vertimo įrenginys",
   "双耳模式": "Dvipusis režimas",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Spustelėkite mygtuką, kad pradėtumėte kalbėti",
   "请说中文...": "Prašome kalbėti kinų kalba...",
   "将翻译为英文...": "Verčiama į anglų kalbą...",
-  "戴左耳机的人说": "Asmuo su kairiuoju ausiniu sako",
-  "戴右耳机的人说": "Asmuo su dešiniuoju ausiniu sako",
+  "左耳机": "Asmuo su kairiuoju ausiniu sako",
+  "右耳机": "Asmuo su dešiniuoju ausiniu sako",
   "位置权限说明": "Vietos leidimo paaiškinimas",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Norėdami padėti rasti pamestas „Bluetooth“ ausines, mums reikia jūsų geografinės vietos leidimo",
   "麦克风权限说明": "Mikrofono leidimo paaiškinimas",
@@ -335,5 +335,31 @@
   "无法打开应用": "Nepavyko atidaryti programos",
   "商城": "Parduotuvė",
   "是否要跳转到官方应用？": "Ar norite pereiti į oficialią programą?",
-  "是否要跳转到商城应用？": "Ar norite pereiti į parduotuvės programą?"
+  "是否要跳转到商城应用？": "Ar norite pereiti į parduotuvės programą?",
+  "新品": "Nauji produktai",
+  "节点选择": "Pasirinkti mazgą",
+  "中国": "Kinija",
+  "中国香港": "Hongkongas",
+  "美国": "Jungtinės Amerikos Valstijos",
+  "新加坡": "Singapūras",
+  "澳大利亚": "Australija",
+  "马来西亚": "Malaisija",
+  "旅行": "Kelionės",
+  "会议": "Susitikimas",
+  "个人场景": "Asmeninė scena",
+  "专业功能": "Profesinės funkcijos",
+  "温馨提醒": "Šiltas priminimas",
+  "不再提示": "Nebebus rodomi pranešimai",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Abi pusės turi ausines, o viena pusė naudoja telefoną. Asmuo, dėvintis ausines, kalba ir išverčia, tada per telefoną išsako tai kitam, kuris kalba į telefoną ir išverčia, o ausinės groja kitam asmeniui.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Abi pusės dėvi po vieną ausinę, mano kalba po vertimo bus transliuojama į kitų ausines, o jų kalba bus transliuojama į mano ausines.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Abi pusės kalba tiesiogiai, mano kalba per telefoną bus išversta ir transliuojama kitam asmeniui, po to kitas asmuo kalba ir išverčia per telefoną, kad aš girdėčiau, taip pasiekiamas tarpusavio vertimas.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "Kai reikia klausytis užsienio kalbos kalbėjimo, užsienio filmų ir pan., paspauskite pradžios mygtuką, kalbėtojo kalba bus verčiama ir transliuojama į mano ausines, o vertimas bus įrašomas programoje.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "Dalyvaujant susitikime, paspauskite įrašymo mygtuką, kad pradėtumėte įrašyti susitikimo turinį, kalbos turinys bus tiesiogiai paverstas į tekstą, pabaigus, įrašas bus išsaugotas ir galės būti eksportuojamas, taip pat sukuriama AI susitikimo santrauka.",
+
+  "温馨提示": "Draugiškas priminimas",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Prašome eiti į sistemos nustatymus ir prijungti „Bluetooth“ įrenginį. Jei jau prijungtas nepatvirtintas įrenginys, pirmiausia atjunkite jį ir bandykite dar kartą.",
+
+  "立刻前往": "Eiti dabar"
+
 }

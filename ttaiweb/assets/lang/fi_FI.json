@@ -212,7 +212,7 @@
 
   "文件已删除": "Tiedosto on poistettu",
 
-  "您确定要删除此录音文件吗？": "Haluatko varmasti poistaa tämän äänitiedoston?",
+  "您确定要删除此文件吗？": "Haluatko varmasti poistaa tämän äänitiedoston?",
 
   "删除": "Poista",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Yksityisyyspolitiikan lataaminen epäonnistui",
   "暂无隐私政策内容": "Yksityisyyspolitiikan sisältöä ei ole saatavilla",
   "权限请求结果": "Lupapyyntö tulos",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Tervetuloa käyttämään Doujiao-sovellusta. Jotta voimme tarjota sinulle paremman palvelun, hyväksy ensin ja valitse",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Tervetuloa käyttämään ObtuneAI-sovellusta. Jotta voimme tarjota sinulle paremman palvelun, hyväksy ensin ja valitse",
   "AI智能体": "AI-älykäs agentti",
   "翻译机": "Käännöskone",
   "双耳模式": "Kaksikorvakuuloketila",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Napsauta painiketta aloittaaksesi puhumisen",
   "请说中文...": "Puhu kiinaa...",
   "将翻译为英文...": "Käännetään englanniksi...",
-  "戴左耳机的人说": "Henkilö, jolla on vasen kuuloke, sanoi",
-  "戴右耳机的人说": "Henkilö, jolla on oikea kuuloke, sanoi",
+  "左耳机": "Henkilö, jolla on vasen kuuloke, sanoi",
+  "右耳机": "Henkilö, jolla on oikea kuuloke, sanoi",
   "位置权限说明": "Sijaintiluvan selitys",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Jotta voimme auttaa sinua löytämään kadonneet Bluetooth-kuulokkeet, tarvitsemme sijaintiluvan",
   "麦克风权限说明": "Mikrofoniluvan selitys",
@@ -335,5 +335,41 @@
   "无法打开应用": "Sovelluksen avaaminen epäonnistui",
   "商城": "Kauppa",
   "是否要跳转到官方应用？": "Haluatko siirtyä viralliseen sovellukseen?",
-  "是否要跳转到商城应用？": "Haluatko siirtyä kaupan sovellukseen?"
+  "是否要跳转到商城应用？": "Haluatko siirtyä kaupan sovellukseen?",
+  "新品": "Uudet tuotteet",
+  "节点选择": "Solmun valinta",
+  "中国": "Kiina",
+  "中国香港": "Hong Kong",
+  "美国": "Yhdysvallat",
+  "新加坡": "Singapore",
+  "澳大利亚": "Australia",
+  "马来西亚": "Malesia",
+  "旅行": "Matka",
+  "会议": "Kokous",
+  "个人场景": "Henkilökohtainen skenaario",
+  "专业功能": "Ammattimaiset toiminnot",
+  "温馨提醒": "Ystävällinen muistutus",
+  "不再提示": "Älä muistuta enää",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Toinen henkilö käyttää kuulokkeita ja toinen puhelinta. Kuulokkeita käyttävä henkilö puhuu ja käännös toistetaan puhelimesta toiselle henkilölle, joka puhuu puhelimeen ja käännös toistetaan kuulokkeista takaisin kuulokkeiden käyttäjälle.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Molemmat osapuolet käyttävät yhtä kuuloketta. Kun puhun, se käännetään ja toistetaan välittömästi toisen osapuolen kuulokkeissa; kun toinen osapuoli puhuu, se käännetään ja toistetaan välittömästi omissa kuulokkeissani.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Molemmat osapuolet keskustelevat kasvokkain. Puhun puhelimella, käännös toistetaan toiselle osapuolelle, jonka jälkeen toinen osapuoli puhuu puhelimella ja käännös toistetaan minulle, näin ollen saavutetaan molemminpuolinen käännösviestintä.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Kun on tarpeen kuunnella vieraskielistä puhetta tai katsella ulkomaisia elokuvia reaaliaikaisesti, napsauta käynnistyspainiketta. Puhujan kieli käännetään reaaliaikaisesti kuulokkeisiini, ja käännöksen sisältö tallennetaan myös ohjelmistoon.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Osallistuttaessa kokoukseen, napsauta nauhoituspainiketta aloittaaksesi kokouksen sisällön tallentamisen. Puhutut sanat muutetaan reaaliaikaisesti tekstiksi, ja kokouksen päätyttyä se tallennetaan ja voidaan viedä äänenä, samalla luoden kokouksen yhteenvedon tekoälyn avulla.",
+
+  "温馨提示": "Ystävällinen muistutus",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Siirry järjestelmäasetuksiin yhdistääksesi Bluetooth-laitteen. Jos luvaton laite on jo yhdistetty, katkaise sen yhteys ensin ja yritä sitten uudelleen.",
+
+  "立刻前往": "Mene nyt"
+
 }

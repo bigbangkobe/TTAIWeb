@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ttaiweb/quick_start_page.dart';
 import 'package:universal_html/html.dart' as html;
 
+import 'AppLocalizations.dart';
 import 'VideoCallPage.dart';
 
 
@@ -16,11 +17,12 @@ class JoinViewPage extends ConsumerStatefulWidget {
 class _JoinViewPageState extends ConsumerState<JoinViewPage> {
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Join Video Call'),
+        title: Text(localization.translate('加入房间')),
       ),
       body: Center(
         child: Column(
@@ -33,7 +35,7 @@ class _JoinViewPageState extends ConsumerState<JoinViewPage> {
             // Join Room Button
             ElevatedButton.icon(
               icon: const Icon(Icons.video_call), // Video icon
-              label: const Text('Join Video Call'),
+              label: Text(localization.translate('加入房间')),
               onPressed: () async{
                 if (html.window.navigator.mediaDevices?.getUserMedia != null) {
                   // 设备支持 getUserMedia

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ttaiweb/JoinViewPage.dart';
 import 'AnalyticsObserver.dart';
 import 'LanguageManager.dart';
+import 'Providers.dart';
 import 'ZegoUntils.dart';
 
 void main() async {
@@ -73,6 +74,7 @@ class MyApp extends ConsumerWidget {
           .notifier);
       not.selectLeftLanguage(ZegoConfig.instance.rightLanguageIndex);
       not.selectRightLanguage(ZegoConfig.instance.leftLanguageIndex);
+      ref.read(localeProvider.notifier).changeLanguage(not.getLeftSelectedLanguage()['localName']);
     });
     // agoraChannelId = channelId!;
     return MaterialApp(

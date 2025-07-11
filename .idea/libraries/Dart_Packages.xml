@@ -201,7 +201,7 @@
         <entry key="geocoding_ios">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_ios-3.0.1/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_ios-3.0.2/lib" />
             </list>
           </value>
         </entry>
@@ -257,14 +257,14 @@
         <entry key="html">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/html-0.15.5+1/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/html-0.15.6/lib" />
             </list>
           </value>
         </entry>
         <entry key="http">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/http-1.3.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/http-1.4.0/lib" />
             </list>
           </value>
         </entry>
@@ -320,7 +320,7 @@
         <entry key="logger">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/logger-2.5.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/logger-2.6.0/lib" />
             </list>
           </value>
         </entry>
@@ -369,7 +369,7 @@
         <entry key="path_provider_android">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_android-2.2.16/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_android-2.2.17/lib" />
             </list>
           </value>
         </entry>
@@ -453,7 +453,7 @@
         <entry key="provider">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/provider-6.1.4/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/provider-6.1.5/lib" />
             </list>
           </value>
         </entry>
@@ -474,7 +474,7 @@
         <entry key="shared_preferences_android">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.9/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.10/lib" />
             </list>
           </value>
         </entry>
@@ -632,10 +632,17 @@
             </list>
           </value>
         </entry>
+        <entry key="web_socket">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket-1.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="web_socket_channel">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket_channel-2.4.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket_channel-3.0.3/lib" />
             </list>
           </value>
         </entry>
@@ -649,7 +656,7 @@
         <entry key="zego_express_engine">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/zego_express_engine-3.20.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/zego_express_engine-3.21.0-private.370/lib" />
             </list>
           </value>
         </entry>
@@ -685,7 +692,7 @@
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/flutter_sound_web-9.28.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding-3.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_android-3.3.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_ios-3.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_ios-3.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geocoding_platform_interface-3.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geolocator-13.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geolocator_android-4.6.2/lib" />
@@ -693,8 +700,8 @@
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geolocator_platform_interface-4.2.6/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geolocator_web-4.1.3/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/geolocator_windows-0.2.5/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/html-0.15.5+1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/http-1.3.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/html-0.15.6/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/http-1.4.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/http_parser-4.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/intl-0.19.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/js-0.6.7/lib" />
@@ -702,14 +709,14 @@
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/leak_tracker_flutter_testing-3.0.8/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/leak_tracker_testing-3.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/lints-5.1.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/logger-2.5.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/logger-2.6.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/matcher-0.12.16+1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/material_color_utilities-0.11.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/meta-1.15.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/nested-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path-1.9.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider-2.1.5/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_android-2.2.16/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_android-2.2.17/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_foundation-2.4.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_linux-2.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/path_provider_platform_interface-2.1.2/lib" />
@@ -721,10 +728,10 @@
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/permission_handler_windows-0.1.3/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/platform-3.1.6/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/plugin_platform_interface-2.1.8/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/provider-6.1.4/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/provider-6.1.5/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/riverpod-2.6.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences-2.5.3/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.9/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.10/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_foundation-2.5.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_linux-2.4.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/shared_preferences_platform_interface-2.4.1/lib" />
@@ -746,9 +753,10 @@
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/vector_math-2.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/vm_service-14.3.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web-1.1.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket_channel-2.4.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket-1.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/web_socket_channel-3.0.3/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/xdg_directories-1.1.0/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/zego_express_engine-3.20.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/hosted/pub.flutter-io.cn/zego_express_engine-3.21.0-private.370/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

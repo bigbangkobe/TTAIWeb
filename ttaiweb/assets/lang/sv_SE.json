@@ -212,7 +212,7 @@
 
   "文件已删除": "Filen har tagits bort",
 
-  "您确定要删除此录音文件吗？": "Är du säker på att du vill ta bort den här inspelningsfilen?",
+  "您确定要删除此文件吗？": "Är du säker på att du vill ta bort den här inspelningsfilen?",
 
   "删除": "Ta bort",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "Misslyckades med att ladda integritetspolicyn",
   "暂无隐私政策内容": "Inget innehåll för integritetspolicyn",
   "权限请求结果": "Resultat av behörighetsförfrågan",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Välkommen till Doujiao-appen. För att ge dig bättre service, vänligen godkänn först.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Välkommen till ObtuneAI-appen. För att ge dig bättre service, vänligen godkänn först.",
   "AI智能体": "AI Agent",
   "翻译机": "Översättningsmaskin",
   "双耳模式": "Dubbelhörlursläge",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Tryck på knappen för att börja prata",
   "请说中文...": "Vänligen tala kinesiska...",
   "将翻译为英文...": "Översätter till engelska...",
-  "戴左耳机的人说": "Personen med vänster hörlur pratar",
-  "戴右耳机的人说": "Personen med höger hörlur pratar",
+  "左耳机": "Personen med vänster hörlur pratar",
+  "右耳机": "Personen med höger hörlur pratar",
   "位置权限说明": "Förklaring av platsbehörighet",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "För att hjälpa dig hitta dina förlorade Bluetooth-hörlurar behöver vi åtkomst till din plats",
   "麦克风权限说明": "Förklaring av mikrofonbehörighet",
@@ -335,5 +335,29 @@
   "无法打开应用": "Kunde inte öppna appen",
   "商城": "Butik",
   "是否要跳转到官方应用？": "Vill du gå till den officiella appen?",
-  "是否要跳转到商城应用？": "Vill du gå till butikens app?"
+  "是否要跳转到商城应用？": "Vill du gå till butikens app?",
+  "新品": "Nya produkter",
+  "节点选择": "Val av nod",
+  "中国": "Kina",
+  "中国香港": "Hongkong, Kina",
+  "美国": "USA",
+  "新加坡": "Singapore",
+  "澳大利亚": "Australien",
+  "马来西亚": "Malaysia",
+  "旅行": "Resa",
+  "会议": "Möte",
+  "个人场景": "Personligt scenario",
+  "专业功能": "Professionella funktioner",
+  "温馨提醒": "Vänligt påminnelse",
+  "不再提示": "Visa inte detta meddelande igen",
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。": "Båda parter, en bär hörlurar och den andra använder telefonen. Personen med hörlurar talar och översätter, och spelar sedan upp det för den andra personen via telefonen. Den andra personen talar till telefonen och översätter, och spelar upp det för personen med hörlurar via hörlurarna.",
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。": "Båda parter bär ett par hörlurar, när jag talar kommer översättningen att spelas upp i den andra personens hörlurar i realtid. När den andra personen talar kommer översättningen att spelas upp i mina hörlurar i realtid.",
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。": "Båda parter kommunicerar ansikte mot ansikte, jag talar genom telefonen och översätter för att den andra ska höra. Sedan talar den andra personen genom telefonen och översätter för att jag ska höra, vilket möjliggör ömsesidig översättning och kommunikation.",
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。": "När det är nödvändigt att lyssna på tal på ett främmande språk i realtid, till exempel främmande filmer, tryck på startknappen och talarens språk kommer att översättas och spelas upp i våra hörlurar i realtid, samtidigt som översättningen sparas i programvaran.",
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。": "När du deltar i ett möte, tryck på inspelningsknappen för att börja spela in mötets innehåll, talinnehållet kommer att omvandlas till text i realtid, och efter avslutning sparas det och kan exporteras som en inspelningsfil, samtidigt som ett AI-mötesprotokoll genereras.",
+
+  "温馨提示": "Vänlig påminnelse",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Gå till systeminställningarna för att ansluta en Bluetooth-enhet. Om en obehörig enhet redan är ansluten, koppla från den först och försök sedan igen."
+
 }

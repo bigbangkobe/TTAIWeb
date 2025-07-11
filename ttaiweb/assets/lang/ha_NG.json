@@ -212,7 +212,7 @@
 
   "文件已删除": "An share fayil",
 
-  "您确定要删除此录音文件吗？": "Kuna da tabbacin cewa kuna son share wannan fayil na rikodi?",
+  "您确定要删除此文件吗？": "Kuna da tabbacin cewa kuna son share wannan fayil na rikodi?",
 
   "删除": "Share",
 
@@ -249,7 +249,7 @@
   "加载隐私政策失败": "An kasa loda manufofin sirri",
   "暂无隐私政策内容": "Babu abun ciki na manufofin sirri a halin yanzu",
   "权限请求结果": "Sakamakon buƙatar izini",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Barka da zuwa aikace-aikacen Doujiao, don samar muku da sabis mafi kyau, da fatan za ku yarda da duba.",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Barka da zuwa aikace-aikacen ObtuneAI, don samar muku da sabis mafi kyau, da fatan za ku yarda da duba.",
   "AI智能体": "Na'ura mai hankali AI",
   "翻译机": "Injin fassara",
   "双耳模式": "Yanayin kunne biyu",
@@ -314,8 +314,8 @@
   "点击按钮，开始说话": "Danna maɓallin don fara magana",
   "请说中文...": "Don Allah ku yi magana da Sinanci...",
   "将翻译为英文...": "Ana fassara zuwa Turanci...",
-  "戴左耳机的人说": "Mutumin da ya sanya belun kunne na hagu ya ce",
-  "戴右耳机的人说": "Mutumin da ya sanya belun kunne na dama ya ce",
+  "左耳机": "Mutumin da ya sanya belun kunne na hagu ya ce",
+  "右耳机": "Mutumin da ya sanya belun kunne na dama ya ce",
   "位置权限说明": "Bayani kan izinin wuri",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "Don taimaka muku nemo belun kunne na Bluetooth da suka ɓace, muna buƙatar samun izinin wurin ku",
   "麦克风权限说明": "Bayani kan izinin makirufo",
@@ -335,5 +335,41 @@
   "无法打开应用": "An kasa buɗe aikace-aikacen",
   "商城": "Kasuwanci",
   "是否要跳转到官方应用？": "Shin kuna son zuwa zuwa aikace-aikacen hukuma?",
-  "是否要跳转到商城应用？": "Shin kuna son zuwa aikace-aikacen kasuwanci?"
+  "是否要跳转到商城应用？": "Shin kuna son zuwa aikace-aikacen kasuwanci?",
+  "新品": "Sabbin kayayyaki",
+  "节点选择": "Zaɓin nodo",
+  "中国": "Sin",
+  "中国香港": "Hong Kong",
+  "美国": "Amurka",
+  "新加坡": "Singapore",
+  "澳大利亚": "Australiya",
+  "马来西亚": "Malaysia",
+  "旅行": "Tafiya",
+  "会议": "Taro",
+  "个人场景": "Yanayi na mutum",
+  "专业功能": "Ayyuka na kwararru",
+  "温馨提醒": "Tuni da tunatarwa",
+  "不再提示": "Kada a sake tunatarwa",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Dayan mutum yana sanya kunne-ƙafa, ɗayan kuma yana amfani da wayar hannu. Wanda ke sanya kunne-ƙafa yana magana kuma an fassara, sannan ana kunna shi daga wayar don sauraron wanda ke waje; wanda ke magana daga wayar yana fassara kuma yana kunna shi a cikin kunne-ƙafa don wanda ke sanya kunne-ƙafa.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Dukkan bangarorin suna sanya kunne-ƙafa guda. Idan na yi magana, an fassara sannan ana kunna shi kai tsaye a cikin kunne-ƙafa na ɗayan; idan ɗayan yana magana, an fassara kuma ana kunna shi kai tsaye a cikin kunne-ƙafa na.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Bangarorin biyu suna tattaunawa fuska da fuska. Ni na yi magana ta wayar hannu, sannan an fassara kuma ana kunna shi ga ɗayan; daga baya ɗayan yana magana ta wayar hannu, an fassara kuma ana kunna shi a gare ni, don haka yana samar da sadarwa ta fassarar juna.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Idan ana buƙatar sauraron maganganun harshe na waje ko kallon fina-finai na waje kai tsaye, danna maɓallin fara. Harshe na mai magana zai fassaru kai tsaye zuwa kunne-ƙafa na, kuma abun fassarar zai kasance yana cikin shirin.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "Lokacin halartar taro, danna maɓallin ɗaukar rikodi don fara ɗaukar abubuwan da ke cikin taron. Maganganun ana canza su zuwa rubutu kai tsaye, sannan bayan an gama, za a adana su kuma za a iya fitar da fayil ɗin rikodi, tare da samar da taƙaitaccen taron ta hanyar AI.",
+
+  "温馨提示": "Tunanin kirki",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Da fatan za a je zuwa saitunan tsarin don haɗa na'urar Bluetooth. Idan an riga an haɗa wata na'ura da ba ta da izini, da fatan za a cire ta kafin sake haɗawa.",
+
+  "立刻前往": "Je yanzu"
+
 }

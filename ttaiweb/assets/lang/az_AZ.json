@@ -173,7 +173,7 @@
   "示例 DOC 文件内容": "Nümunə DOC fayl məzmunu",
   "分享TXT文件": "TXT faylını paylaş",
   "文件已删除": "Fayl silindi",
-  "您确定要删除此录音文件吗？": "Bu yazı faylını silmək istədiyinizə əminsinizmi?",
+  "您确定要删除此文件吗？": "Bu yazı faylını silmək istədiyinizə əminsinizmi?",
   "删除": "Sil",
   "无法播放音频文件": "Audio faylını oxutmaq mümkün deyil",
   "错误": "Xəta",
@@ -202,7 +202,7 @@
   "加载隐私政策失败": "Gizlilik siyasəti yüklənmədi",
   "暂无隐私政策内容": "Hal-hazırda gizlilik siyasəti mövcud deyil",
   "权限请求结果": "İcazə tələbinin nəticəsi",
-  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "Fasulya tətbiqini istifadə etməyə xoş gəlmisiniz. Sizə daha yaxşı xidmət göstərmək üçün, əvvəlcə razılaşmağınız xahiş olunur",
+  "欢迎使用豆角APP，为了带给您更好的服务。请您先同意勾选": "ObtuneAI Fasulya tətbiqini istifadə etməyə xoş gəlmisiniz. Sizə daha yaxşı xidmət göstərmək üçün, əvvəlcə razılaşmağınız xahiş olunur",
   "AI智能体": "Süni intellekt agenti",
   "翻译机": "Tərcümə cihazı",
   "双耳模式": "İki qulaq rejimi",
@@ -267,8 +267,8 @@
   "点击按钮，开始说话": "Danışmağa başlamaq üçün düyməyə klikləyin",
   "请说中文...": "Zəhmət olmasa çincə danışın...",
   "将翻译为英文...": "İngilis dilinə tərcümə olunacaq...",
-  "戴左耳机的人说": "Sol qulaqcıq taxan şəxs dedi",
-  "戴右耳机的人说": "Sağ qulaqcıq taxan şəxs dedi",
+  "左耳机": "Sol qulaqcıq taxan şəxs dedi",
+  "右耳机": "Sağ qulaqcıq taxan şəxs dedi",
   "位置权限说明": "Məkan icazəsi izahı",
   "为了帮您寻找丢失的蓝牙耳机，我们需要获取您的地理位置权限": "İtirilmiş Bluetooth qulaqcıqlarınızı tapmaq üçün yer icazəsinə ehtiyacımız var",
   "麦克风权限说明": "Mikrofon icazəsi izahı",
@@ -288,5 +288,41 @@
   "无法打开应用": "Tətbiqi açmaq mümkün olmadı",
   "商城": "Mağaza",
   "是否要跳转到官方应用？": "Rəsmi tətbiqə keçmək istəyirsiniz?",
-  "是否要跳转到商城应用？": "Mağaza tətbiqinə keçmək istəyirsiniz?"
+  "是否要跳转到商城应用？": "Mağaza tətbiqinə keçmək istəyirsiniz?",
+  "新品": "Yeni məhsul",
+  "节点选择": "Qovşaq seçimi",
+  "中国": "Çin",
+  "中国香港": "Honq Konq",
+  "美国": "Birləşmiş Ştatlar",
+  "新加坡": "Sinqapur",
+  "澳大利亚": "Avstraliya",
+  "马来西亚": "Malayziya",
+  "旅行": "Səyahət",
+  "会议": "Konfrans",
+  "个人场景": "Şəxsi səhnə",
+  "专业功能": "Peşəkar funksiyalar",
+  "温馨提醒": "İsti xatırlatma",
+  "不再提示": "Bir daha xatırlatma",
+
+  "双方一人戴耳机，一人使用手机。戴耳机一方说话并翻译后，通过手机播放给对方听，对方对着手机说话并翻译，通过耳机播放给戴耳机一方听。":
+  "Biri qulaqcıq taxır, digəri telefonu istifadə edir. Qulaqcıq taxan tərəf danışır və tərcümə olunur, telefon vasitəsilə qarşı tərəfə səsləndirilir; qarşı tərəf telefona danışır və tərcümə olunaraq qulaqcıqdan səsləndirilir.",
+
+  "双方各戴一只耳机，我方说话在翻译后会实时在对方耳机中播放，对方说话在翻译后实时在我方的耳机中播放。":
+  "Hər iki tərəf bir qulaqcıq taxır. Mən danışdıqdan və tərcümə edildikdən sonra səs qarşı tərəfin qulaqcığında dərhal səslənir, qarşı tərəf danışdıqda isə səs mənim qulaqcığımda dərhal səslənir.",
+
+  "双方面对面交流，我方通过手机说话并翻译播放给对方听，接下来对方同样通过手机说话并翻译播放给我方听，以此实现相互翻译沟通。":
+  "Hər iki tərəf üz-üzə ünsiyyət qurur. Mən telefondan danışaraq tərcümə edib qarşı tərəfə səsləndirirəm, sonra qarşı tərəf eyni üsulla danışıb mənə səsləndirir və qarşılıqlı tərcümə edilmiş ünsiyyət təmin edilir.",
+
+  "当需要实时收听外语发言，外语电影等时，点击开始按钮，发言人的语言会实时传译到我方耳机中，同时翻译内容会被记录在软件中。":
+  "Xarici dildə çıxış və ya film izləyərkən, 'başla' düyməsini klikləyin, çıxış edən şəxsin dili dərhal mənim qulaqcığıma tərcümə olunacaq və tərcümə məzmunu proqramda qeydə alınacaq.",
+
+  "参加会议时，点击录音按钮开始记录会议内容，说话内容实时转换成文字，结束后保存并可导出录音文件，同时生成AI会议整理。":
+  "İclasda iştirak edərkən, 'yazmaq' düyməsini basaraq iclas məzmununu qeyd edin; danışılan sözlər dərhal mətnə çevrilir, iclas sonunda qeyd edilərək ixrac edilə bilər və eyni zamanda AI tərəfindən iclas xülasəsi yaradılır.",
+
+
+  "温馨提示": "Zərif xatırlatma",
+
+  "请前往系统设置连接蓝牙设备,若已连接了非认证设备，请先断开非认证设备后再连接": "Zəhmət olmasa, Bluetooth cihazını qoşmaq üçün sistem ayarlarına keçin. Əgər artıq sertifikatlaşdırılmamış bir cihaz qoşulubsa, əvvəlcə onu ayırın və sonra yenidən qoşun.",
+  "立刻前往": "İndi get"
+
 }
